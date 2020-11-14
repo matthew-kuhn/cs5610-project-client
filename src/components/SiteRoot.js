@@ -16,6 +16,7 @@ export default class SiteRoot extends React.Component {
         <Route path="/polls" exact={true} />
         <Route path="/login" exact={true} />
         <Route path="/register" exact={true} />
+        <Route path="/search" exact={true} />
       </Router>
     );
   }
