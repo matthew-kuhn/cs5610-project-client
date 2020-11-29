@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jeyVqFG41UHeaFJnI6FmKivsAX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cs5610-project-server" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jack\Documents\cs5610-project-prototype\src" />
+      <recent name="C:\Users\Jack\Documents\cs5610-project-prototype\src\project\HomePage" />
+      <recent name="C:\Users\Jack\Documents\cs5610-project-prototype\src\project\SearchDetails" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm run">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm run" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="npm.npm run" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="" />
+      <created>1604178881062</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604178881062</updated>
+      <workItem from="1604178882611" duration="8405000" />
+      <workItem from="1604190513742" duration="604000" />
+      <workItem from="1606532576583" duration="2010000" />
+      <workItem from="1606535356604" duration="910000" />
+      <workItem from="1606601648566" duration="20634000" />
+      <workItem from="1606665393975" duration="757000" />
+      <workItem from="1606667655355" duration="935000" />
+    </task>
+    <task id="LOCAL-00001" summary="project prototype for movie search">
+      <created>1604185740372</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604185740372</updated>
+    </task>
+    <task id="LOCAL-00002" summary="configure project for heroku">
+      <created>1604186961146</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604186961147</updated>
+    </task>
+    <task id="LOCAL-00003" summary="change to https">
+      <created>1604187447878</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604187447878</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added session login">
+      <created>1606687062959</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606687062960</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project prototype for movie search" />
+    <MESSAGE value="configure project for heroku" />
+    <MESSAGE value="change to https" />
+    <MESSAGE value="added session login" />
+    <option name="LAST_COMMIT_MESSAGE" value="added session login" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604186898652">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1604186898652" />
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1606687061972">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1606687061972" />
+    <state x="674" y="239" key="FileChooserDialogImpl" timestamp="1606617522254">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="674" y="239" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1606617522254" />
+    <state width="770" height="187" key="GridCell.Tab.0.bottom" timestamp="1606667368303">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="770" height="187" key="GridCell.Tab.0.bottom/0.0.1600.870@0.0.1600.870" timestamp="1606667368303" />
+    <state width="770" height="187" key="GridCell.Tab.0.center" timestamp="1606667368303">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="770" height="187" key="GridCell.Tab.0.center/0.0.1600.870@0.0.1600.870" timestamp="1606667368303" />
+    <state width="770" height="187" key="GridCell.Tab.0.left" timestamp="1606667368303">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="770" height="187" key="GridCell.Tab.0.left/0.0.1600.870@0.0.1600.870" timestamp="1606667368303" />
+    <state width="770" height="187" key="GridCell.Tab.0.right" timestamp="1606667368303">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="770" height="187" key="GridCell.Tab.0.right/0.0.1600.870@0.0.1600.870" timestamp="1606667368303" />
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1606687169606">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1606687169606" />
+    <state x="617" y="311" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606687280888">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="617" y="311" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.870@0.0.1600.870" timestamp="1606687280888" />
+    <state x="426" y="129" key="new project wizard" timestamp="1606534502239">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="426" y="129" key="new project wizard/0.0.1600.870@0.0.1600.870" timestamp="1606534502239" />
+  </component>
+</project>
