@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { getSessionUser, getUser } from "../../services/userService";
+import { getSessionUser } from "../../services/userService";
 
 export class MoviesList extends React.Component {
   constructor(props) {
@@ -15,29 +15,16 @@ export class MoviesList extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.username) {
-      getUser(this.props.username)
-        .then((response) => {
-          if (response.status !== 200) {
-            throw new Error("No such user exists");
-          } else {
-            return response.json();
-          }
-        })
-        .then((user) => this.setState({ user: user }))
-        .catch((error) => alert(error));
-    } else {
-      getSessionUser()
-        .then((response) => {
-          if (response.status !== 200) {
-            throw new Error("login first");
-          } else {
-            return response.json();
-          }
-        })
-        .then((user) => this.setState({ user: user }))
-        .catch((error) => alert(error));
-    }
+    getSessionUser()
+      .then((response) => {
+        if (response.status !== 200) {
+        } else {
+          return response.json();
+        }
+      })
+      .then((user) => this.setState({ user: { username: user.username } }))
+      .catch((error) => {});
+    this.componentDidMount = true;
   }
 
   titleChange = (evt) => {
@@ -83,7 +70,7 @@ export class MoviesList extends React.Component {
               value={this.state.title}
             />
             <button
-              className="btn btn-success col-2"
+              className="btn default-color col-2"
               onClick={this.searchMovies}
             >
               Search

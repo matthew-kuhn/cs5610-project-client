@@ -12,11 +12,15 @@ export default class MoviesManager extends React.Component {
     return (
       <div className="fill special-color">
         <Router>
-          <div className="nav navbar red darken-1 text-white">
+          <div className="nav navbar red darken-3 text-white">
             <Link className="text-white" to="/">
               Home
             </Link>
-            <span onClick={logOut}>Log Out</span>
+            <span onClick={logOut}>
+              <Link className="text-white" to="/">
+                Log Out
+              </Link>
+            </span>
           </div>
           <Route exact path={"/"} component={MoviesList} />
           <Route exact path={"/login"} component={Login} />
