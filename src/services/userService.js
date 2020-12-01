@@ -25,3 +25,10 @@ export const getUser = (username) =>
   fetch(`http://localhost:8080/api/users/${username}`, {
     credentials: "include",
   });
+
+export const logOut = () => {
+  fetch(`http://localhost:8080/api/logout`, {
+    method: "POST",
+    credentials: "include",
+  });
+};

@@ -1,16 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { MoviesList } from "./HomePage/MoviesList";
 import MovieDetail from "./SearchDetails/MovieDetail";
 import Login from "./Login/login";
 import Profile from "./Profile/profile";
 import Register from "./Register/register";
+import { logOut } from "../services/userService";
 
 export default class MoviesManager extends React.Component {
   render() {
     return (
       <div className="fill special-color">
         <Router>
+          <div className="nav navbar red darken-1 text-white">
+            <Link className="text-white" to="/">
+              Home
+            </Link>
+            <span onClick={logOut}>Log Out</span>
+          </div>
           <Route exact path={"/"} component={MoviesList} />
           <Route exact path={"/login"} component={Login} />
           <Route
