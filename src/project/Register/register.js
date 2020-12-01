@@ -48,8 +48,8 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="col-8 ">
+      <div className="d-flex justify-content-center">
+        <div className="col-8">
           <h1 className="d-flex justify-content-center">Register</h1>
           <div className="form-group">
             <label htmlFor="login-role">Choose Role</label>
