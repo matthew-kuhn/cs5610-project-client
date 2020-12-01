@@ -1,5 +1,6 @@
 import React from "react";
 import { register } from "../../services/userService";
+import "../../index.css";
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class Register extends React.Component {
       confirmPassword: "",
       name: "",
       adminKey: "",
-      role: "",
+      role: "user",
     };
   }
 
@@ -39,16 +40,34 @@ export default class Register extends React.Component {
   };
 
   register = () => {
-    if (this.state.password === this.state.confirmPassword) {
-      register(this.state.username, this.state.password).then((user) =>
-        this.props.history.push(`/profile`)
-      );
+    console.log(this.state);
+    if (
+      this.state.username.length > 1 &&
+      this.state.password.length > 1 &&
+      this.state.role.length > 1 &&
+      this.state.name.length > 1
+    ) {
+      if (this.state.password === this.state.confirmPassword) {
+        register(
+          this.state.username,
+          this.state.password,
+          this.state.role,
+          this.state.adminKey,
+          this.state.name
+        ).then((res) => {
+          if (res.message === "Admin Key incorrect") {
+            alert(res.message);
+          } else {
+            this.props.history.push(`/profile`);
+          }
+        });
+      }
     }
   };
 
   render() {
     return (
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center fill text-white">
         <div className="col-8">
           <h1 className="d-flex justify-content-center">Register</h1>
           <div className="form-group">
@@ -71,7 +90,7 @@ export default class Register extends React.Component {
             <div className="col-6">
               <label htmlFor="login-password">Password</label>
               <input
-                type="text"
+                type="password"
                 className="form-control"
                 id="login-password"
                 onChange={this.setPassword}
@@ -89,11 +108,11 @@ export default class Register extends React.Component {
               />
             </div>
             <div className="col-6">
-              <label htmlFor="login-password">Confirm Password</label>
+              <label htmlFor="login-confirm-password">Confirm Password</label>
               <input
-                type="text"
+                type="password"
                 className="form-control"
-                id="login-password"
+                id="login-confirm-password"
                 onChange={this.setConfirmPassword}
               />
             </div>
