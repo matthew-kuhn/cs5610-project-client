@@ -1,46 +1,103 @@
-import React from 'react'
-import MovieDetail from "../SearchDetails/MovieDetail";
-import axios from 'axios'
-import {Link} from "react-router-dom";
+import React from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { getSessionUser, getUser } from "../../services/userService";
 
 export class MoviesList extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            movies: [],
-            title: ''
-        }
+    this.state = {
+      movies: [],
+      title: "",
+      user: { username: "" },
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.username) {
+      getUser(this.props.username)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw new Error("No such user exists");
+          } else {
+            return response.json();
+          }
+        })
+        .then((user) => this.setState({ user: user }))
+        .catch((error) => alert(error));
+    } else {
+      getSessionUser()
+        .then((response) => {
+          if (response.status !== 200) {
+            throw new Error("login first");
+          } else {
+            return response.json();
+          }
+        })
+        .then((user) => this.setState({ user: user }))
+        .catch((error) => alert(error));
     }
+  }
 
-    titleChange = (evt) => {
-        this.setState({title: evt.target.value})
-    }
+  titleChange = (evt) => {
+    this.setState({ title: evt.target.value });
+  };
 
-    searchMovies = () => {
-        axios.get(`https://www.omdbapi.com/?apikey=4dc3a14a&s=${this.state.title}`)
-            .then(response => this.setState({movies: response.data.Search}))
-    }
+  searchMovies = () => {
+    axios
+      .get(`https://www.omdbapi.com/?apikey=4dc3a14a&s=${this.state.title}`)
+      .then((response) => this.setState({ movies: response.data.Search }));
+  };
 
-    render() {
-        return (
-            <div>
-                <h1>MoviesList</h1>
-                <input
-                    onChange={(event) => this.titleChange(event)}
-                    value={this.state.title}
-                />
-                <button onClick={this.searchMovies}>Search</button>
-                <ul>
-                {this.state.movies.map(movie =>
-                    <li key={movie.imdbID}>
-                        <Link to={`/movie/${movie.imdbID}`}>
-                            {movie.Title}
-                        </Link>
-                    </li>
-                )}
-                </ul>
+  render() {
+    return (
+      <div className="d-flex justify-content-center fill text-white">
+        <div className="col-8">
+          <h1 className="d-flex justify-content-center">Moview</h1>
+          {this.state.user.username === "" && (
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn default-color"
+                onClick={() => this.props.history.push(`/login`)}
+              >
+                Login
+              </button>
+              <button
+                className="btn default-color"
+                onClick={() => this.props.history.push(`/register`)}
+              >
+                Sign up
+              </button>
             </div>
-        )
-    }
+          )}
+          {this.state.user.username !== "" && (
+            <h3 className="d-flex justify-content-center">
+              Welcome Back, {this.state.user.username}!
+            </h3>
+          )}
+          <div className="row">
+            <input
+              className="form-control col-8"
+              onChange={(event) => this.titleChange(event)}
+              value={this.state.title}
+            />
+            <button
+              className="btn btn-success col-2"
+              onClick={this.searchMovies}
+            >
+              Search
+            </button>
+          </div>
+          <ul className="list-group">
+            {this.state.movies.map((movie) => (
+              <li key={movie.imdbID} className="list-group-item">
+                <Link to={`/movie/${movie.imdbID}`}>{movie.Title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }
