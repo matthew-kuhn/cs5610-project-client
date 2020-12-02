@@ -16,6 +16,9 @@ export default class MoviesManager extends React.Component {
             <Link className="text-white" to="/">
               Home
             </Link>
+            <Link className="text-white float-right" to="/login">
+              Log in
+            </Link>
             <span onClick={logOut}>
               <Link className="text-white" to="/">
                 Log Out

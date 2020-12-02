@@ -55,12 +55,18 @@ export default class Register extends React.Component {
           this.state.adminKey,
           this.state.name
         ).then((res) => {
-          if (res.message === "Admin Key incorrect") {
-            alert(res.message);
+          if (res.message) {
+            document.getElementById("alert-box").innerHTML = res.message;
+            document.getElementById("alert-box").className =
+              "alert alert-danger";
           } else {
             this.props.history.push(`/profile`);
           }
         });
+      } else {
+        document.getElementById("alert-box").innerHTML =
+          "Passwords do not match";
+        document.getElementById("alert-box").className = "alert alert-danger";
       }
     }
   };
@@ -70,6 +76,11 @@ export default class Register extends React.Component {
       <div className="d-flex justify-content-center fill text-white">
         <div className="col-8">
           <h1 className="d-flex justify-content-center">Register</h1>
+          <div
+            className="alert alert-danger d-none"
+            role="alert"
+            id="alert-box"
+          ></div>
           <div className="form-group">
             <label htmlFor="login-role">Choose Role</label>
             <select className="form-control" onChange={this.setRole}>

@@ -85,9 +85,7 @@ class MovieDetail extends React.Component {
                 rows="3"
                 onChange={this.setReviewText}
                 placeholder="write a review here"
-              >
-                {this.state.review}
-              </textarea>
+              ></textarea>
               <button
                 className="btn btn-primary col-3"
                 onClick={this.addReview}
@@ -96,9 +94,14 @@ class MovieDetail extends React.Component {
               </button>
             </div>
           )}
-          <ul>
+          <ul className="list-group">
             {this.state.fetchedReviews.map((review) => (
-              <li>{review.text}</li>
+              <li
+                key={review._id}
+                className="list-group-item unique-color lighten-1"
+              >
+                {review.text}- {review.user}
+              </li>
             ))}
           </ul>
         </div>
