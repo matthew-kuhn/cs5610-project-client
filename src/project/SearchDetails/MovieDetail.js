@@ -41,8 +41,8 @@ class MovieDetail extends React.Component {
             return findReviewsForMovie(this.state.movie.imdbID)
           }
         })
-        .catch(error => alert(error))
         .then(reviews => this.setState({fetchedReviews: reviews}))
+        .catch(error => alert(error))
   }
 
   render() {

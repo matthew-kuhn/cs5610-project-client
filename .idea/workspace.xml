@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="login, profile, register">
-      <change afterPath="$PROJECT_DIR$/src/services/reviewService.js" afterDir="false" />
+    <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/SearchDetails/MovieDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/SearchDetails/MovieDetail.js" afterDir="false" />
     </list>
@@ -106,7 +105,7 @@
       <workItem from="1606665393975" duration="757000" />
       <workItem from="1606667655355" duration="1305000" />
       <workItem from="1606689427512" duration="638000" />
-      <workItem from="1606864138615" duration="4178000" />
+      <workItem from="1606864138615" duration="5904000" />
     </task>
     <task id="LOCAL-00001" summary="project prototype for movie search">
       <created>1604185740372</created>
@@ -143,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606689693585</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added review functionality">
+      <created>1606869414176</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606869414176</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,17 +173,18 @@
     <MESSAGE value="change to https" />
     <MESSAGE value="added session login" />
     <MESSAGE value="login, profile, register" />
-    <option name="LAST_COMMIT_MESSAGE" value="login, profile, register" />
+    <MESSAGE value="Added review functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added review functionality" />
   </component>
   <component name="WindowStateProjectService">
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604186898652">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1604186898652" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1606869316276">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1606869413487">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1606869316276" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1606869413487" />
     <state x="674" y="239" key="FileChooserDialogImpl" timestamp="1606864125514">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -198,10 +205,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state width="1540" height="184" key="GridCell.Tab.0.right/0.0.1600.870@0.0.1600.870" timestamp="1606864093739" />
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1606689723308">
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1606869431951">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1606689723308" />
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1606869431951" />
     <state x="641" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606864808477">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
