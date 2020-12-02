@@ -58,13 +58,21 @@ class MovieDetail extends React.Component {
         }
       })
       .then((reviews) => this.setState({ fetchedReviews: reviews }))
-      .catch((error) => alert(error));
+      .catch((error) => {
+        document.getElementById("alert-box").innerHTML = error.message;
+        document.getElementById("alert-box").className = "alert alert-danger";
+      });
   };
 
   render() {
     return (
       <div className="d-flex justify-content-center fill text-white">
         <div className="col-8">
+          <div
+            className="alert alert-danger d-none"
+            role="alert"
+            id="alert-box"
+          ></div>
           <h1 className="d-flex justify-content-center">
             {this.state.movie.Title}
           </h1>
@@ -100,7 +108,7 @@ class MovieDetail extends React.Component {
                 key={review._id}
                 className="list-group-item unique-color lighten-1"
               >
-                {review.text}- {review.user}
+                {review.text}- {review.userId}
               </li>
             ))}
           </ul>
