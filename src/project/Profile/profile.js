@@ -20,7 +20,10 @@ export default class Profile extends React.Component {
           }
         })
         .then((user) => this.setState({ user: user }))
-        .catch((error) => alert(error));
+        .catch((error) => {
+          document.getElementById("alert-box").innerHTML = error.message;
+          document.getElementById("alert-box").className = "alert alert-danger";
+        });
     } else {
       getSessionUser()
         .then((response) => {
@@ -31,7 +34,10 @@ export default class Profile extends React.Component {
           }
         })
         .then((user) => this.setState({ user: user }))
-        .catch((error) => alert(error));
+        .catch((error) => {
+          document.getElementById("alert-box").innerHTML = error.message;
+          document.getElementById("alert-box").className = "alert alert-danger";
+        });
     }
   }
 
@@ -40,6 +46,11 @@ export default class Profile extends React.Component {
       <div className="d-flex justify-content-center fill text-white">
         <div className="col-8">
           <h1 className="d-flex justify-content-center">Profile</h1>
+          <div
+            className="alert alert-danger d-none"
+            role="alert"
+            id="alert-box"
+          ></div>
           <h1 className="d-flex justify-content-center">
             {this.state.user.username}
           </h1>
