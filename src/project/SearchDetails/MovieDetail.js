@@ -108,7 +108,7 @@ class MovieDetail extends React.Component {
                 key={review._id}
                 className="list-group-item unique-color lighten-1"
               >
-                {review.text}- {review.userId}
+                {review.text}- {review.username}
               </li>
             ))}
           </ul>
