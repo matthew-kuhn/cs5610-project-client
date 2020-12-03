@@ -28,7 +28,10 @@ export default class Login extends React.Component {
         }
       })
       .then((user) => this.props.history.push("/profile"))
-      .catch((error) => alert(error));
+      .catch((error) => {
+        document.getElementById("alert-box").innerHTML = error.message;
+        document.getElementById("alert-box").className = "alert alert-danger";
+      });
   };
 
   render() {
@@ -36,6 +39,11 @@ export default class Login extends React.Component {
       <div className="d-flex justify-content-center fill text-white">
         <div className="col-8">
           <h1>Login</h1>
+          <div
+            className="alert alert-danger d-none"
+            role="alert"
+            id="alert-box"
+          ></div>
           <div className="form-group">
             <label htmlFor="login-username">Username</label>
             <input
