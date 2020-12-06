@@ -52,7 +52,7 @@ export class MoviesList extends React.Component {
               </button>
               <button
                 className="btn default-color"
-                onClick={() => this.props.history.push(`/register`)}
+                onClick={() => this.props.history.push(`/policy`)}
               >
                 Sign up
               </button>

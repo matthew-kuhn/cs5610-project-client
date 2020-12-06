@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import {
   createReview,
-  findReviewsForMovie,
+  findReviewsForMovie, flagReview,
 } from "../../services/reviewService";
 import { getSessionUser } from "../../services/userService";
 
@@ -64,6 +64,11 @@ class MovieDetail extends React.Component {
       });
   };
 
+  flagReview = (review) => {
+    flagReview(review)
+        .then(response => console.log(response))
+  }
+
   render() {
     return (
       <div className="d-flex justify-content-center fill text-white">
@@ -109,6 +114,7 @@ class MovieDetail extends React.Component {
                 className="list-group-item unique-color lighten-1"
               >
                 {review.text}- {review.username}
+                <button className="btn btn-primary" onClick={() => this.flagReview(review)}>Flag review</button>
               </li>
             ))}
           </ul>

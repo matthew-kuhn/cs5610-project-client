@@ -11,3 +11,24 @@ export const findReviewsForMovie = (movieId) =>
         credentials: "include",
     })
         .then(response => response.json())
+
+export const findReviewsForUser = (username) =>
+    fetch(`http://localhost:8080/api/users/${username}/reviews`, {
+        credentials: "include"
+    })
+        .then(response => response.json())
+
+export const flagReview = (review) =>
+    fetch("http://localhost:8080/api/reviews", {
+        method: "PUT",
+        credentials: "include",
+        body: JSON.stringify(review),
+        headers: { "content-type": "application/json" },
+    })
+
+export const findAllReviews = () =>
+    fetch("http://localhost:8080/api/reviews", {
+        credentials: "include",
+    })
+        .then(response => response.json())
+

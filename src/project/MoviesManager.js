@@ -6,6 +6,8 @@ import Login from "./Login/login";
 import Profile from "./Profile/profile";
 import Register from "./Register/register";
 import { logOut } from "../services/userService";
+import Policy from "./Policy/policy";
+import policy from "./Policy/policy";
 
 export default class MoviesManager extends React.Component {
   render() {
@@ -43,6 +45,7 @@ export default class MoviesManager extends React.Component {
               <MovieDetail {...props} movieId={props.match.params.movieId} />
             )}
           />
+          <Route exact path={"/policy"} component={Policy}/>
         </Router>
       </div>
     );
