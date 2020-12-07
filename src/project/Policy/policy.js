@@ -1,4 +1,5 @@
 import React from "react";
+
 export default class Policy extends React.Component {
     constructor(props) {
         super(props);
@@ -29,10 +30,11 @@ export default class Policy extends React.Component {
                     </p>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" onChange={this.setChecked}/>
-                        <label className="form-check-label" htmlFor="defaultCheck1">
-                            I understand
-                        </label>
+                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1"
+                           onChange={this.setChecked}/>
+                    <label className="form-check-label" htmlFor="defaultCheck1">
+                        I understand
+                    </label>
                 </div>
                 {
                     this.state.checked && <button className="btn btn-primary" onClick={this.register}>Register</button>

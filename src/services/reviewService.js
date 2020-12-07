@@ -2,8 +2,8 @@ export const createReview = (text, movieId) =>
     fetch("http://localhost:8080/api/reviews", {
         method: "POST",
         credentials: "include",
-        body: JSON.stringify({ text, movieId }),
-        headers: { "content-type": "application/json" },
+        body: JSON.stringify({text, movieId}),
+        headers: {"content-type": "application/json"},
     });
 
 export const findReviewsForMovie = (movieId) =>
@@ -23,7 +23,7 @@ export const flagReview = (review) =>
         method: "PUT",
         credentials: "include",
         body: JSON.stringify(review),
-        headers: { "content-type": "application/json" },
+        headers: {"content-type": "application/json"},
     })
 
 export const findAllReviews = () =>
@@ -31,4 +31,10 @@ export const findAllReviews = () =>
         credentials: "include",
     })
         .then(response => response.json())
+
+export const deleteReview = (reviewId) =>
+    fetch(`http://localhost:8080/api/reviews/${reviewId}`, {
+        method: "DELETE",
+        credentials: "include"
+    })
 
