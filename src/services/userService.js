@@ -1,5 +1,7 @@
+import {url} from "./urlRoot";
+
 export const register = (username, password, role, adminKey, name) =>
-    fetch("http://localhost:8080/api/register", {
+    fetch(`${url}/api/register`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({username, password, role, adminKey, name}),
@@ -7,7 +9,7 @@ export const register = (username, password, role, adminKey, name) =>
     }).then((response) => response.json());
 
 export const login = (username, password) =>
-    fetch("http://localhost:8080/api/login", {
+    fetch(`${url}/api/login`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({username, password}),
@@ -17,24 +19,24 @@ export const login = (username, password) =>
     });
 
 export const getSessionUser = () =>
-    fetch("http://localhost:8080/api/currentUser", {
+    fetch(`${url}/api/currentUser`, {
         credentials: "include",
     });
 
 export const getUser = (username) =>
-    fetch(`http://localhost:8080/api/users/${username}`, {
+    fetch(`${url}/api/users/${username}`, {
         credentials: "include",
     });
 
 export const logOut = () => {
-    fetch(`http://localhost:8080/api/logout`, {
+    fetch(`${url}/api/logout`, {
         method: "POST",
         credentials: "include",
     });
 };
 
 export const blockUser = (username) =>
-    fetch(`http://localhost:8080/api/users/${username}`, {
+    fetch(`${url}/api/users/${username}`, {
         method: "PUT",
         credentials: "include"
     })

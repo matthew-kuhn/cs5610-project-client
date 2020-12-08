@@ -1,5 +1,7 @@
+import {url} from "./urlRoot";
+
 export const createReview = (text, movieId) =>
-    fetch("http://localhost:8080/api/reviews", {
+    fetch(`${url}/api/reviews`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({text, movieId}),
@@ -7,19 +9,19 @@ export const createReview = (text, movieId) =>
     });
 
 export const findReviewsForMovie = (movieId) =>
-    fetch(`http://localhost:8080/api/movies/${movieId}/reviews`, {
+    fetch(`${url}/api/movies/${movieId}/reviews`, {
         credentials: "include",
     })
         .then(response => response.json())
 
 export const findReviewsForUser = (username) =>
-    fetch(`http://localhost:8080/api/users/${username}/reviews`, {
+    fetch(`${url}/api/users/${username}/reviews`, {
         credentials: "include"
     })
         .then(response => response.json())
 
 export const flagReview = (review) =>
-    fetch("http://localhost:8080/api/reviews", {
+    fetch(`${url}/api/reviews`, {
         method: "PUT",
         credentials: "include",
         body: JSON.stringify(review),
@@ -27,13 +29,13 @@ export const flagReview = (review) =>
     })
 
 export const findAllReviews = () =>
-    fetch("http://localhost:8080/api/reviews", {
+    fetch(`${url}/api/reviews`, {
         credentials: "include",
     })
         .then(response => response.json())
 
 export const deleteReview = (reviewId) =>
-    fetch(`http://localhost:8080/api/reviews/${reviewId}`, {
+    fetch(`${url}/api/reviews/${reviewId}`, {
         method: "DELETE",
         credentials: "include"
     })
