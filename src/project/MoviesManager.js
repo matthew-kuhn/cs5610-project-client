@@ -5,13 +5,33 @@ import MovieDetail from "./SearchDetails/MovieDetail";
 import Login from "./Login/login";
 import Profile from "./Profile/profile";
 import Register from "./Register/register";
-import { logOut } from "../services/userService";
+import { logOut, getSessionUser } from "../services/userService";
 import Policy from "./Policy/policy";
 
 export default class MoviesManager extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+      loggedInUser: {},
+    };
+  }
+
   logout = () => {
     logOut().then((window.location.href = "/"));
   };
+
+  componentDidMount() {
+    getSessionUser()
+      .then((response) => {
+        if (response.status !== 200) {
+        } else {
+          this.setState({ loggedIn: true });
+          return response.json();
+        }
+      })
+      .then((user) => this.setState({ loggedInUser: user }));
+  }
 
   render() {
     return (
@@ -21,14 +41,17 @@ export default class MoviesManager extends React.Component {
             <Link className="text-white" to="/">
               Home
             </Link>
-            <Link className="text-white float-right" to="/login">
-              Log in
-            </Link>
-            <span onClick={this.logout}>
-              {/* <Link className="text-white" to="/"> */}
-              Log Out
-              {/* </Link> */}
-            </span>
+            {!this.state.loggedIn && (
+              <Link className="text-white float-right" to="/login">
+                Log in
+              </Link>
+            )}
+            {this.state.loggedIn && (
+              <Link className="text-white float-right" to="/profile">
+                Profile
+              </Link>
+            )}
+            {this.state.loggedIn && <span onClick={this.logout}>Log Out</span>}
           </div>
           <Route exact path={"/"} component={MoviesList} />
           <Route exact path={"/login"} component={Login} />
