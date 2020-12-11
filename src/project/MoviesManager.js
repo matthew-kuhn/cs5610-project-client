@@ -11,7 +11,6 @@ import Policy from "./Policy/policy";
 export default class MoviesManager extends React.Component {
   logout = () => {
     logOut().then((window.location.href = "/"));
-    console.log("clicked");
   };
 
   render() {
