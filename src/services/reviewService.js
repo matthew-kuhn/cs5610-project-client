@@ -13,8 +13,8 @@ export const findReviewsForMovie = (movieId) =>
     credentials: "include",
   }).then((response) => response.json());
 
-export const findReviewsForUser = (username) =>
-  fetch(`${url}/api/users/${username}/reviews`, {
+export const findReviewsForUser = (userId) =>
+  fetch(`${url}/api/users/${userId}/reviews`, {
     credentials: "include",
   }).then((response) => response.json());
 

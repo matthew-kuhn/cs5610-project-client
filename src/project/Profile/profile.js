@@ -42,7 +42,7 @@ export default class Profile extends React.Component {
 
   deleteReview = (reviewId) => {
     deleteReview(reviewId).then(
-      findReviewsForUser(this.state.user.username).then((reviews) => {
+      findReviewsForUser(this.state.user._id).then((reviews) => {
         this.setState({ reviews: reviews });
       })
     );
@@ -70,7 +70,7 @@ export default class Profile extends React.Component {
     let temp = review;
     temp.text = document.getElementById(`${review._id}-input`).value;
     editReview(review._id, temp).then(
-      findReviewsForUser(this.state.user.username).then((reviews) => {
+      findReviewsForUser(this.state.user._id).then((reviews) => {
         this.setState({ reviews: reviews });
       })
     );
@@ -129,7 +129,7 @@ export default class Profile extends React.Component {
         })
         .then((user) =>
           this.setState({ user: user }, () =>
-            findReviewsForUser(this.state.user.username).then((reviews) => {
+            findReviewsForUser(this.state.user._id).then((reviews) => {
               console.log(reviews);
               this.setState({ reviews: reviews });
             })
@@ -151,7 +151,7 @@ export default class Profile extends React.Component {
         .then((user) =>
           this.setState({ user: user }, () => {
             if (this.state.user.role === "user") {
-              findReviewsForUser(this.state.user.username).then((reviews) => {
+              findReviewsForUser(this.state.user._id).then((reviews) => {
                 this.setState({ reviews: reviews });
               });
             } else if (this.state.user.role === "admin") {
