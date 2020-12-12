@@ -49,7 +49,7 @@ class MovieDetail extends React.Component {
   };
 
   addReview = () => {
-    createReview(this.state.review, this.state.movie.imdbID)
+    createReview(this.state.review, this.state.movie.imdbID, this.state.movie.Title)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error("login before adding a review");

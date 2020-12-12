@@ -40,3 +40,13 @@ export const blockUser = (username) =>
     method: "PUT",
     credentials: "include",
   }).then((response) => response.json());
+
+export const editUser = (user) =>
+    fetch(`${url}/api/users`, {
+        method: "PUT",
+        credentials: "include",
+        body: JSON.stringify(user),
+        headers: {
+            "content-type": "application/json",
+        }
+    }).then((response) => response.json());

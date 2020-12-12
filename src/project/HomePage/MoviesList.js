@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {getSessionUser} from "../../services/userService";
+import {findAllReviews} from "../../services/reviewService";
 
 export class MoviesList extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ export class MoviesList extends React.Component {
             movies: [],
             title: "",
             user: {username: ""},
+            reviews: []
         };
     }
 
@@ -25,6 +27,10 @@ export class MoviesList extends React.Component {
             .then((user) => this.setState({user: {username: user.username}}))
             .catch((error) => {
             });
+        findAllReviews()
+            .then(reviews => {
+                this.setState({reviews: reviews})
+            })
         this.componentDidMount = true;
     }
 
@@ -83,6 +89,19 @@ export class MoviesList extends React.Component {
                                 <Link to={`/movie/${movie.imdbID}`}>{movie.Title}</Link>
                             </li>
                         ))}
+                    </ul>
+                    <h3>Recent Reviews</h3>
+                    <ul className="list-group">
+                    {
+                        this.state.reviews.reverse().slice(0, this.state.reviews.length < 5 ? this.state.reviews.length : 5).map(review => (
+                            <li
+                                key={review._id}
+                                className="list-group-item unique-color lighten-1"
+                            >
+                                {review.movieTitle}: {review.text} - {review.username}
+                            </li>
+                        ))
+                    }
                     </ul>
                 </div>
             </div>

@@ -1,10 +1,10 @@
 import {url} from "./urlRoot";
 
-export const createReview = (text, movieId) =>
+export const createReview = (text, movieId, movieTitle) =>
     fetch(`${url}/api/reviews`, {
         method: "POST",
         credentials: "include",
-        body: JSON.stringify({text, movieId}),
+        body: JSON.stringify({text, movieId, movieTitle}),
         headers: {"content-type": "application/json"},
     });
 
