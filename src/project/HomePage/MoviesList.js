@@ -12,7 +12,8 @@ export class MoviesList extends React.Component {
             movies: [],
             title: "",
             user: {username: ""},
-            reviews: []
+            reviews: [],
+            searchHasResults: true
         };
     }
 
@@ -41,7 +42,15 @@ export class MoviesList extends React.Component {
     searchMovies = () => {
         axios
             .get(`https://www.omdbapi.com/?apikey=4dc3a14a&s=${this.state.title}`)
-            .then((response) => this.setState({movies: response.data.Search}));
+            .then((response) => {
+                if (response.data.Search) {
+                    this.setState({searchHasResults: true})
+                    this.setState({movies: response.data.Search})
+                } else {
+                    console.log("search has no results")
+                    this.setState({searchHasResults: false})
+                }
+            });
     };
 
     render() {
@@ -83,6 +92,12 @@ export class MoviesList extends React.Component {
                             Search
                         </button>
                     </div>
+                    {!this.state.searchHasResults &&
+                        <div
+                            className="alert alert-danger"
+                            role="alert"
+                        >No Movies found</div>
+                    }
                     <ul className="list-group">
                         {this.state.movies.map((movie) => (
                             <li key={movie.imdbID} className="list-group-item">
