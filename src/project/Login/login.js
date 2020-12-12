@@ -4,6 +4,7 @@ import { login } from "../../services/userService";
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.updateParent = this.props.updateParent;
     this.state = {
       username: "",
       password: "",
@@ -27,7 +28,10 @@ export default class Login extends React.Component {
           return response.json();
         }
       })
-      .then((user) => this.props.history.push("/profile"))
+      .then((user) => {
+        this.props.history.push("/profile");
+        this.updateParent(user);
+      })
       .catch((error) => {
         document.getElementById("alert-box").innerHTML = error.message;
         document.getElementById("alert-box").className = "alert alert-danger";

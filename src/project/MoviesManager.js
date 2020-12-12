@@ -21,6 +21,11 @@ export default class MoviesManager extends React.Component {
     logOut().then((window.location.href = "/"));
   };
 
+  refresh = (user) => {
+    this.setState({ loggedIn: true });
+    this.setState({ loggedInUser: user });
+  };
+
   componentDidMount() {
     getSessionUser()
       .then((response) => {
@@ -31,6 +36,24 @@ export default class MoviesManager extends React.Component {
         }
       })
       .then((user) => this.setState({ loggedInUser: user }));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state !== prevState &&
+      prevState.loggedIn === false &&
+      this.state.loggedIn === true
+    ) {
+      getSessionUser()
+        .then((response) => {
+          if (response.status !== 200) {
+          } else {
+            this.setState({ loggedIn: true });
+            return response.json();
+          }
+        })
+        .then((user) => this.setState({ loggedInUser: user }));
+    }
   }
 
   render() {
@@ -54,7 +77,11 @@ export default class MoviesManager extends React.Component {
             {this.state.loggedIn && <span onClick={this.logout}>Log Out</span>}
           </div>
           <Route exact path={"/"} component={MoviesList} />
-          <Route exact path={"/login"} component={Login} />
+          <Route
+            exact
+            path={"/login"}
+            render={(props) => <Login {...props} updateParent={this.refresh} />}
+          />
           <Route
             exact
             path={"/profile/:username"}
