@@ -5,6 +5,7 @@ import "../../index.css";
 export default class Register extends React.Component {
   constructor(props) {
     super(props);
+    this.updateParent = this.props.updateParent;
     this.state = {
       username: "",
       password: "",
@@ -40,7 +41,6 @@ export default class Register extends React.Component {
   };
 
   register = () => {
-    console.log(this.state);
     if (
       this.state.username.length > 1 &&
       this.state.password.length > 1 &&
@@ -60,6 +60,7 @@ export default class Register extends React.Component {
             document.getElementById("alert-box").className =
               "alert alert-danger";
           } else {
+            this.updateParent(res.body);
             this.props.history.push(`/profile`);
           }
         });

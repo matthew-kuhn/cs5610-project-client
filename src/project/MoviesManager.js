@@ -115,7 +115,13 @@ export default class MoviesManager extends React.Component {
             )}
           />
           <Route exact path={"/profile"} component={Profile} />
-          <Route exact path={"/register"} component={Register} />
+          <Route
+            exact
+            path={"/register"}
+            render={(props) => (
+              <Register {...props} updateParent={this.refresh} />
+            )}
+          />
           <Route
             exact
             path={"/movie/:movieId"}
