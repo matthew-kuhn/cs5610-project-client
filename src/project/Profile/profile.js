@@ -19,7 +19,14 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { username: "", role: "", blocked: false, password: "", name: "", blockedUsers: []},
+      user: {
+        username: "",
+        role: "",
+        blocked: false,
+        password: "",
+        name: "",
+        blockedUsers: [],
+      },
       reviews: [],
       loggedInUser: {},
       editingMode: false,
@@ -29,7 +36,7 @@ export default class Profile extends React.Component {
         blocked: false,
         password: "",
         name: "",
-        blockedUsers: []
+        blockedUsers: [],
       },
     };
   }
@@ -87,12 +94,12 @@ export default class Profile extends React.Component {
     blockUser(username).then((response) => {
       console.log(username + " blocked");
       getUser(this.state.user.username)
-          .then(response => response.json())
-          .then(user => this.setState({user: user}))
+        .then((response) => response.json())
+        .then((user) => this.setState({ user: user }));
     });
 
   unblockUser = (userId) =>
-      unblockUser(userId).then((response) => console.log(userId + " unblocked"));
+    unblockUser(userId).then((response) => console.log(userId + " unblocked"));
 
   setEditingMode = () => this.setState({ editingMode: true });
 
@@ -193,11 +200,13 @@ export default class Profile extends React.Component {
             role="alert"
             id="alert-box"
           ></div>
-
+          <h1 id="userName" className="d-flex justify-content-center">
+            {this.state.user.username}
+          </h1>
           {!this.state.editingMode &&
             this.state.user.username === this.state.loggedInUser.username && (
               <button
-                className="btn btn-sm btn-primary float-right"
+                className="btn btn-sm btn-primary "
                 id="round-btn"
                 onClick={() => {
                   this.setEditingMode();
@@ -209,15 +218,6 @@ export default class Profile extends React.Component {
                 </h6>
               </button>
             )}
-          <h1 id="userName">{this.state.user.username}</h1>
-          <br />
-          {this.state.loggedInUser &&
-            this.state.loggedInUser.username === this.state.user.username && (
-              <h3 className="d-flex justify-content-center">
-                Role: {this.state.user.role}
-              </h3>
-            )}
-
           {this.state.editingMode && (
             <button
               className="btn btn-success"
@@ -234,6 +234,13 @@ export default class Profile extends React.Component {
               </h5>
             </button>
           )}
+          <br />
+          {this.state.loggedInUser &&
+            this.state.loggedInUser.username === this.state.user.username && (
+              <h3 className="d-flex justify-content-center">
+                Role: {this.state.user.role}
+              </h3>
+            )}
           {this.state.editingMode && (
             <div className="form-group">
               <label htmlFor="login-username">Username</label>
@@ -330,23 +337,30 @@ export default class Profile extends React.Component {
               <h3>Blocked Users</h3>
               <ul className="list-group">
                 {this.state.user.blockedUsers.map((blockedUser) => (
-                    <li key={blockedUser._id}
-                        className="list-group-item unique-color lighten-1"
+                  <li
+                    key={blockedUser._id}
+                    className="list-group-item unique-color lighten-1"
+                  >
+                    {blockedUser.username}
+                    <button
+                      className="btn btn-success"
+                      onClick={() => {
+                        this.unblockUser(blockedUser._id);
+                        const newBlockedUsers = this.state.user.blockedUsers.filter(
+                          (user) => user._id !== blockedUser._id
+                        );
+                        this.setState({
+                          user: {
+                            ...this.state.user,
+                            blockedUsers: newBlockedUsers,
+                          },
+                        });
+                      }}
                     >
-                      {blockedUser.username}
-                      <button
-                          className="btn btn-success"
-                          onClick={() => {
-                            this.unblockUser(blockedUser._id);
-                            const newBlockedUsers = this.state.user.blockedUsers.filter(user => user._id !== blockedUser._id)
-                            this.setState({user: {...this.state.user, blockedUsers: newBlockedUsers}})
-                          }}
-                      >
-                        Unblock User
-                      </button>
-                    </li>
-                ))
-                }
+                      Unblock User
+                    </button>
+                  </li>
+                ))}
               </ul>
               <h3>Flagged Reviews</h3>
               <ul className="list-group">
@@ -362,14 +376,16 @@ export default class Profile extends React.Component {
                     >
                       Delete
                     </button>
-                    {!this.state.user.blockedUsers.map(user => user._id).includes(review.userId) &&
+                    {!this.state.user.blockedUsers
+                      .map((user) => user._id)
+                      .includes(review.userId) && (
                       <button
-                          className="btn btn-danger"
-                          onClick={() => this.blockUser(review.userId)}
+                        className="btn btn-danger"
+                        onClick={() => this.blockUser(review.userId)}
                       >
                         Block User
                       </button>
-                    }
+                    )}
                   </li>
                 ))}
               </ul>
