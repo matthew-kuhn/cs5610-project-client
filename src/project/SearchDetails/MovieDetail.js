@@ -6,6 +6,7 @@ import {
   flagReview,
 } from "../../services/reviewService";
 import { getSessionUser } from "../../services/userService";
+import { Link } from "react-router-dom";
 
 class MovieDetail extends React.Component {
   constructor(props) {
@@ -49,7 +50,11 @@ class MovieDetail extends React.Component {
   };
 
   addReview = () => {
-    createReview(this.state.review, this.state.movie.imdbID, this.state.movie.Title)
+    createReview(
+      this.state.review,
+      this.state.movie.imdbID,
+      this.state.movie.Title
+    )
       .then((response) => {
         if (response.status !== 200) {
           throw new Error("login before adding a review");
@@ -81,7 +86,7 @@ class MovieDetail extends React.Component {
             {this.state.movie.Title}
           </h1>
           <img
-            className="d-flex justify-content-center"
+            className="rounded mx-auto d-block"
             src={this.state.movie.Poster}
             alt="movie poster"
           />
@@ -130,7 +135,10 @@ class MovieDetail extends React.Component {
                 key={review._id}
                 className="list-group-item unique-color lighten-1"
               >
-                {review.text}- {review.username}
+                {review.text}-{" "}
+                <Link className="text-white" to={"/profile/" + review.username}>
+                  {review.username}
+                </Link>
                 {this.state.user.username !== "" && (
                   <button
                     className="btn btn-primary"
