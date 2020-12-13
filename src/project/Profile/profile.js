@@ -3,6 +3,7 @@ import {
   getSessionUser,
   getUser,
   blockUser,
+  unblockUser,
   editUser,
 } from "../../services/userService";
 import {
@@ -18,7 +19,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { username: "", role: "", blocked: false, password: "", name: "" },
+      user: { username: "", role: "", blocked: false, password: "", name: "", blockedUsers: []},
       reviews: [],
       loggedInUser: {},
       editingMode: false,
@@ -28,6 +29,7 @@ export default class Profile extends React.Component {
         blocked: false,
         password: "",
         name: "",
+        blockedUsers: []
       },
     };
   }
@@ -82,7 +84,15 @@ export default class Profile extends React.Component {
   };
 
   blockUser = (username) =>
-    blockUser(username).then((response) => alert(username + " blocked"));
+    blockUser(username).then((response) => {
+      console.log(username + " blocked");
+      getUser(this.state.user.username)
+          .then(response => response.json())
+          .then(user => this.setState({user: user}))
+    });
+
+  unblockUser = (userId) =>
+      unblockUser(userId).then((response) => console.log(userId + " unblocked"));
 
   setEditingMode = () => this.setState({ editingMode: true });
 
@@ -317,6 +327,27 @@ export default class Profile extends React.Component {
           )}
           {this.state.user.role === "admin" && (
             <div>
+              <h3>Blocked Users</h3>
+              <ul className="list-group">
+                {this.state.user.blockedUsers.map((blockedUser) => (
+                    <li key={blockedUser._id}
+                        className="list-group-item unique-color lighten-1"
+                    >
+                      {blockedUser.username}
+                      <button
+                          className="btn btn-success"
+                          onClick={() => {
+                            this.unblockUser(blockedUser._id);
+                            const newBlockedUsers = this.state.user.blockedUsers.filter(user => user._id !== blockedUser._id)
+                            this.setState({user: {...this.state.user, blockedUsers: newBlockedUsers}})
+                          }}
+                      >
+                        Unblock User
+                      </button>
+                    </li>
+                ))
+                }
+              </ul>
               <h3>Flagged Reviews</h3>
               <ul className="list-group">
                 {this.state.reviews.map((review) => (
@@ -331,12 +362,14 @@ export default class Profile extends React.Component {
                     >
                       Delete
                     </button>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => this.blockUser(review.username)}
-                    >
-                      Block User
-                    </button>
+                    {!this.state.user.blockedUsers.map(user => user._id).includes(review.userId) &&
+                      <button
+                          className="btn btn-danger"
+                          onClick={() => this.blockUser(review.userId)}
+                      >
+                        Block User
+                      </button>
+                    }
                   </li>
                 ))}
               </ul>
