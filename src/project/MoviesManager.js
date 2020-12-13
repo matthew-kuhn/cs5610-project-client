@@ -7,7 +7,6 @@ import Profile from "./Profile/profile";
 import Register from "./Register/register";
 import { logOut, getSessionUser } from "../services/userService";
 import Policy from "./Policy/policy";
-import search from "./Search/search";
 import Search from "./Search/search";
 
 export default class MoviesManager extends React.Component {
@@ -63,27 +62,45 @@ export default class MoviesManager extends React.Component {
       <div className="fill special-color">
         <Router>
           <div className="nav navbar red darken-3 text-white">
-            <Link className="text-white" to="/">
+            <Link className="text-white nav-link unique-color darken-1" to="/">
               Home
             </Link>
             {!this.state.loggedIn && (
-              <Link className="text-white float-right" to="/login">
+              <Link
+                className="text-white nav-link unique-color darken-1"
+                to="/login"
+              >
                 Log in
               </Link>
             )}
             {this.state.loggedIn && (
-              <Link className="text-white float-right" to="/profile">
+              <Link
+                className="text-white nav-link unique-color darken-1"
+                to="/profile"
+              >
                 Profile
               </Link>
             )}
-            {this.state.loggedIn && <span onClick={this.logout}>Log Out</span>}
+            {this.state.loggedIn && (
+              <span
+                className="nav-link unique-color darken-1"
+                onClick={this.logout}
+              >
+                Log Out
+              </span>
+            )}
           </div>
           <Route exact path={"/"} component={MoviesList} />
-          <Route exact path={"/search"} component={Search}/>
-          <Route exact path={"/search/:searchString"}
-                 render={(props) => (
-                     <Search {...props} searchString={props.match.params.searchString} />
-                 )}
+          <Route exact path={"/search"} component={Search} />
+          <Route
+            exact
+            path={"/search/:searchString"}
+            render={(props) => (
+              <Search
+                {...props}
+                searchString={props.match.params.searchString}
+              />
+            )}
           />
           <Route
             exact
