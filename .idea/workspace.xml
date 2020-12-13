@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/project/Search/search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/HomePage/MoviesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/HomePage/MoviesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/MoviesManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/MoviesManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +116,7 @@
       <workItem from="1607400656252" duration="2061000" />
       <workItem from="1607526690034" duration="3735000" />
       <workItem from="1607739944979" duration="13131000" />
-      <workItem from="1607803403701" duration="5628000" />
+      <workItem from="1607803403701" duration="15869000" />
     </task>
     <task id="LOCAL-00001" summary="project prototype for movie search">
       <created>1604185740372</created>
@@ -207,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607807019836</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed a bug that crashes the app if searching for a string that returns no movies">
+      <created>1607811227711</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1607811227711</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,17 +248,18 @@
     <MESSAGE value="Revert to heroku address" />
     <MESSAGE value="Adding user editing functionality and display a list of recent reviews in home page" />
     <MESSAGE value="Changed find reviews for user to use ids instead of usernames" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed find reviews for user to use ids instead of usernames" />
+    <MESSAGE value="Fixed a bug that crashes the app if searching for a string that returns no movies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug that crashes the app if searching for a string that returns no movies" />
   </component>
   <component name="WindowStateProjectService">
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604186898652">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1604186898652" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607807018809">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607811226990">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607807018809" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607811226990" />
     <state x="674" y="239" key="FileChooserDialogImpl" timestamp="1606864125514">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -274,10 +284,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="134" y="109" key="MergeDialog/0.0.1600.870@0.0.1600.870" timestamp="1607741729291" />
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607807031457">
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607811328701">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607807031457" />
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607811328701" />
     <state x="641" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607198917991">
       <screen x="0" y="0" width="1600" height="870" />
     </state>

@@ -7,6 +7,8 @@ import Profile from "./Profile/profile";
 import Register from "./Register/register";
 import { logOut, getSessionUser } from "../services/userService";
 import Policy from "./Policy/policy";
+import search from "./Search/search";
+import Search from "./Search/search";
 
 export default class MoviesManager extends React.Component {
   constructor(props) {
@@ -77,6 +79,12 @@ export default class MoviesManager extends React.Component {
             {this.state.loggedIn && <span onClick={this.logout}>Log Out</span>}
           </div>
           <Route exact path={"/"} component={MoviesList} />
+          <Route exact path={"/search"} component={Search}/>
+          <Route exact path={"/search/:searchString"}
+                 render={(props) => (
+                     <Search {...props} searchString={props.match.params.searchString} />
+                 )}
+          />
           <Route
             exact
             path={"/login"}

@@ -9,11 +9,9 @@ export class MoviesList extends React.Component {
         super(props);
 
         this.state = {
-            movies: [],
             title: "",
             user: {username: ""},
-            reviews: [],
-            searchHasResults: true
+            reviews: []
         };
     }
 
@@ -40,17 +38,11 @@ export class MoviesList extends React.Component {
     };
 
     searchMovies = () => {
-        axios
-            .get(`https://www.omdbapi.com/?apikey=4dc3a14a&s=${this.state.title}`)
-            .then((response) => {
-                if (response.data.Search) {
-                    this.setState({searchHasResults: true})
-                    this.setState({movies: response.data.Search})
-                } else {
-                    console.log("search has no results")
-                    this.setState({searchHasResults: false})
-                }
-            });
+        if (this.state.title === "") {
+            this.props.history.push('/search')
+        } else {
+            this.props.history.push(`/search/${this.state.title}`)
+        }
     };
 
     render() {
@@ -92,19 +84,6 @@ export class MoviesList extends React.Component {
                             Search
                         </button>
                     </div>
-                    {!this.state.searchHasResults &&
-                        <div
-                            className="alert alert-danger"
-                            role="alert"
-                        >No Movies found</div>
-                    }
-                    <ul className="list-group">
-                        {this.state.movies.map((movie) => (
-                            <li key={movie.imdbID} className="list-group-item">
-                                <Link to={`/movie/${movie.imdbID}`}>{movie.Title}</Link>
-                            </li>
-                        ))}
-                    </ul>
                     <h3>Recent Reviews</h3>
                     <ul className="list-group">
                     {
