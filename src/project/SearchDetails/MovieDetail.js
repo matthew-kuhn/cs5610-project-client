@@ -76,7 +76,7 @@ class MovieDetail extends React.Component {
   render() {
     return (
       <div className="d-flex justify-content-center fill text-white">
-        <div className="col-8">
+        <div className="col-10">
           <div
             className="alert alert-danger d-none"
             role="alert"
@@ -90,11 +90,28 @@ class MovieDetail extends React.Component {
             src={this.state.movie.Poster}
             alt="movie poster"
           />
-          <p>Released: {this.state.movie.Year}</p>
-          <p>Genre: {this.state.movie.Genre}</p>
-          <p>Director: {this.state.movie.Director}</p>
-          <p>Actors: {this.state.movie.Actors}</p>
-          <p>Summary: {this.state.movie.Plot}</p>
+          <div className="lsit-group special-color">
+            <div className="list-group-item special-color-dark">
+              <h3>Released:</h3>
+              <h5>{this.state.movie.Year}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3>Genre:</h3>
+              <h5> {this.state.movie.Genre}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3>Director:</h3>
+              <h5> {this.state.movie.Director}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3>Actors:</h3>
+              <h5> {this.state.movie.Actors}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3> Summary:</h3>
+              <h5> {this.state.movie.Plot}</h5>
+            </div>
+          </div>
           {this.state.user.username !== "" && !this.state.user.blocked && (
             <div className="row">
               <textarea
