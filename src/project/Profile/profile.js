@@ -11,6 +11,8 @@ import {
   deleteReview,
   editReview,
 } from "../../services/reviewService";
+import '../../../node_modules/font-awesome/css/font-awesome.min.css'
+import './profile.style.css'
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -181,30 +183,36 @@ export default class Profile extends React.Component {
             role="alert"
             id="alert-box"
           ></div>
-          <h1 className="d-flex justify-content-center">
-            {this.state.user.username}
-          </h1>
+          
+        
+		  	{!this.state.editingMode &&
+            this.state.user.username === this.state.loggedInUser.username && (
+              <button
+				className="btn btn-sm btn-primary float-right"
+				id="round-btn"
+                onClick={() => {
+                  this.setEditingMode();
+                  this.setState({ tempUser: this.state.user });
+                }}
+              >
+                <h6><b>Edit profile</b></h6>
+              </button>
+            )}
+			<h1 id="userName">
+            	{this.state.user.username}
+         	</h1>
+			<br/>
           {this.state.loggedInUser &&
             this.state.loggedInUser.username === this.state.user.username && (
               <h3 className="d-flex justify-content-center">
                 Role: {this.state.user.role}
               </h3>
             )}
-          {!this.state.editingMode &&
-            this.state.user.username === this.state.loggedInUser.username && (
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  this.setEditingMode();
-                  this.setState({ tempUser: this.state.user });
-                }}
-              >
-                Edit profile
-              </button>
-            )}
+          
           {this.state.editingMode && (
             <button
-              className="btn btn-success"
+			  className="btn btn-success"
+			  id="round-btn"
               onClick={() => {
                 this.setNormalMode();
                 editUser(this.state.tempUser).then((user) =>
@@ -212,7 +220,7 @@ export default class Profile extends React.Component {
                 );
               }}
             >
-              Save edits
+              <h5><b>Save edits</b></h5>
             </button>
           )}
           {this.state.editingMode && (
@@ -273,18 +281,18 @@ export default class Profile extends React.Component {
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-                          className="btn btn-warning"
+						  className="btn btn-warning"
                           id={review._id + "-edit"}
                           onClick={() => this.startEditing(review)}
                         >
-                          Edit Review
+                          <b>Edit Review</b>
                         </button>
                       )}
                     {this.state.loggedInUser.username ===
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-                          className="btn btn-success d-none"
+						  className="btn btn-success d-none"
                           id={review._id + "-save"}
                           onClick={() => this.finishEditing(review)}
                         >
@@ -295,10 +303,10 @@ export default class Profile extends React.Component {
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-                          className="btn btn-danger"
+						  className="btn btn-danger"
                           onClick={() => this.deleteReview(review._id)}
                         >
-                          Delete
+                          <b>Delete</b>
                         </button>
                       )}
                   </li>

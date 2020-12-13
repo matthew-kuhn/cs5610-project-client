@@ -3,6 +3,8 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import {getSessionUser} from "../../services/userService";
 import {findAllReviews} from "../../services/reviewService";
+import logo from "../../clapperboard-icon.png"
+import "./moviesList.style.css"
 
 export class MoviesList extends React.Component {
     constructor(props) {
@@ -48,8 +50,11 @@ export class MoviesList extends React.Component {
     render() {
         return (
             <div className="d-flex justify-content-center fill text-white">
+                
                 <div className="col-8">
+                    <br/>
                     <h1 className="d-flex justify-content-center">Moview</h1>
+                    <img src={logo} alt="Moview logo" id="logo" className="justify-content-center"/>
                     {this.state.user.username === "" && (
                         <div className="d-flex justify-content-center">
                             <button
@@ -66,11 +71,14 @@ export class MoviesList extends React.Component {
                             </button>
                         </div>
                     )}
+                    <br/>
+                    <br/>
                     {this.state.user.username !== "" && (
                         <h3 className="d-flex justify-content-center">
                             Welcome Back, {this.state.user.username}!
                         </h3>
                     )}
+                    <br/>
                     <div className="row">
                         <input
                             className="form-control col-8"
@@ -78,10 +86,11 @@ export class MoviesList extends React.Component {
                             value={this.state.title}
                         />
                         <button
-                            className="btn default-color col-2"
+                            className="btn btn-sm default-color col-2"
+                            id="round-btn"
                             onClick={this.searchMovies}
                         >
-                            Search
+                            <h3><b>Search</b></h3>
                         </button>
                     </div>
                     <h3>Recent Reviews</h3>
