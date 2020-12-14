@@ -110,7 +110,13 @@ export class MoviesList extends React.Component {
                   key={review._id}
                   className="list-group-item unique-color lighten-1"
                 >
-                  {review.movieTitle}: {review.text} -{" "}
+                  <Link
+                    to={`/movie/${review.movieId}`}
+                    style={{ color: "pink" }}
+                  >
+                    {review.movieTitle}:
+                  </Link>
+                  {review.text} -
                   <Link
                     to={"/profile/" + review.username}
                     style={{ color: "pink" }}

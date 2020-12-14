@@ -468,8 +468,13 @@ export default class Profile extends React.Component {
                     id={review._id + "-li"}
                     className="list-group-item unique-color lighten-1"
                   >
-                    {review.movieTitle} :
-                    <div id={review._id + "-text"}>{review.text}</div>
+                    <Link
+                      to={`/movie/${review.movieId}`}
+                      style={{ color: "pink" }}
+                    >
+                      {review.movieTitle}:
+                    </Link>{" "}
+                    :<div id={review._id + "-text"}>{review.text}</div>
                     <input
                       type="text"
                       className="form-control d-none"
