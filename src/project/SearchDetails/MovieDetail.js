@@ -6,6 +6,7 @@ import {
   flagReview,
 } from "../../services/reviewService";
 import { editUser, getSessionUser, getUser } from "../../services/userService";
+import { createReply } from "../../services/replyService";
 import { Link } from "react-router-dom";
 import "./movieDetail.style.css";
 import "../../index.css";
@@ -16,6 +17,7 @@ class MovieDetail extends React.Component {
     this.state = {
       movie: "",
       review: "",
+      reply: "",
       fetchedReviews: [],
       user: { username: "", blocked: false, friends: [] },
     };
@@ -49,6 +51,26 @@ class MovieDetail extends React.Component {
 
   setReviewText = (evt) => {
     this.setState({ review: evt.target.value });
+  };
+
+  setReplyText = (evt) => {
+    this.setState({ reply: evt.target.value });
+  };
+
+  addReply = (reviewId) => {
+    createReply(this.state.reply, reviewId)
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error("login before adding a reply");
+        } else {
+          return findReviewsForMovie(this.state.movie.imdbID);
+        }
+      })
+      .then((reviews) => this.setState({ fetchedReviews: reviews }))
+      .catch((error) => {
+        document.getElementById("alert-box").innerHTML = error.message;
+        document.getElementById("alert-box").className = "alert alert-danger";
+      });
   };
 
   addReview = () => {
@@ -179,6 +201,36 @@ class MovieDetail extends React.Component {
                 >
                   {review.username}
                 </Link>
+                {review.replies && (
+                  <ul className="list-group">
+                    {review.replies.map((reply) => (
+                      <li
+                        key={reply._id}
+                        className="list-group-item unique-color-dark"
+                      >
+                        {reply.text} -{" "}
+                        <Link
+                          style={{ color: "pink" }}
+                          to={"/profile/" + reply.username}
+                        >
+                          {reply.username}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <textarea
+                  className="form-control col-12"
+                  rows="2"
+                  onChange={this.setReplyText}
+                  placeholder="write a reply here"
+                ></textarea>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.addReply(review._id)}
+                >
+                  Post A Reply
+                </button>
                 {this.state.user.username !== "" && (
                   <button
                     className="btn btn-primary"
