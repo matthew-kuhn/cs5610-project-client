@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { getSessionUser } from "../../services/userService";
 import { findAllReviews } from "../../services/reviewService";
 import logo from "../../clapperboard-icon.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./moviesList.style.css";
 
 export class MoviesList extends React.Component {
@@ -88,12 +90,10 @@ export class MoviesList extends React.Component {
             />
             <button
               className="btn btn-sm default-color col-12 col-md-3"
-              id="round-btn"
+              id="search-btn"
               onClick={this.searchMovies}
             >
-              <h3>
-                <b>Search</b>
-              </h3>
+              <FontAwesomeIcon icon={faSearch} size="3x" />
             </button>
           </div>
           <h3>Recent Reviews</h3>
@@ -111,8 +111,8 @@ export class MoviesList extends React.Component {
                 >
                   {review.movieTitle}: {review.text} -{" "}
                   <Link
-                    className="text-white"
                     to={"/profile/" + review.username}
+                    style={{ color: "pink" }}
                   >
                     {review.username}
                   </Link>
