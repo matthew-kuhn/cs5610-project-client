@@ -6,6 +6,7 @@ import {
   flagReview,
 } from "../../services/reviewService";
 import { getSessionUser } from "../../services/userService";
+import { Link } from "react-router-dom";
 
 class MovieDetail extends React.Component {
   constructor(props) {
@@ -49,7 +50,11 @@ class MovieDetail extends React.Component {
   };
 
   addReview = () => {
-    createReview(this.state.review, this.state.movie.imdbID, this.state.movie.Title)
+    createReview(
+      this.state.review,
+      this.state.movie.imdbID,
+      this.state.movie.Title
+    )
       .then((response) => {
         if (response.status !== 200) {
           throw new Error("login before adding a review");
@@ -71,7 +76,7 @@ class MovieDetail extends React.Component {
   render() {
     return (
       <div className="d-flex justify-content-center fill text-white">
-        <div className="col-8">
+        <div className="col-10">
           <div
             className="alert alert-danger d-none"
             role="alert"
@@ -81,15 +86,32 @@ class MovieDetail extends React.Component {
             {this.state.movie.Title}
           </h1>
           <img
-            className="d-flex justify-content-center"
+            className="rounded mx-auto d-block"
             src={this.state.movie.Poster}
             alt="movie poster"
           />
-          <p>Released: {this.state.movie.Year}</p>
-          <p>Genre: {this.state.movie.Genre}</p>
-          <p>Director: {this.state.movie.Director}</p>
-          <p>Actors: {this.state.movie.Actors}</p>
-          <p>Summary: {this.state.movie.Plot}</p>
+          <div className="lsit-group special-color">
+            <div className="list-group-item special-color-dark">
+              <h3>Released:</h3>
+              <h5>{this.state.movie.Year}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3>Genre:</h3>
+              <h5> {this.state.movie.Genre}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3>Director:</h3>
+              <h5> {this.state.movie.Director}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3>Actors:</h3>
+              <h5> {this.state.movie.Actors}</h5>
+            </div>
+            <div className="list-group-item special-color-dark">
+              <h3> Summary:</h3>
+              <h5> {this.state.movie.Plot}</h5>
+            </div>
+          </div>
           {this.state.user.username !== "" && !this.state.user.blocked && (
             <div className="row">
               <textarea
@@ -130,7 +152,10 @@ class MovieDetail extends React.Component {
                 key={review._id}
                 className="list-group-item unique-color lighten-1"
               >
-                {review.text}- {review.username}
+                {review.text}-{" "}
+                <Link className="text-white" to={"/profile/" + review.username}>
+                  {review.username}
+                </Link>
                 {this.state.user.username !== "" && (
                   <button
                     className="btn btn-primary"

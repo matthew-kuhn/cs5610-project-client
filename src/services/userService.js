@@ -35,11 +35,17 @@ export const logOut = () => {
   });
 };
 
-export const blockUser = (username) =>
-  fetch(`${url}/api/users/${username}`, {
-    method: "PUT",
-    credentials: "include",
+export const blockUser = (userId) =>
+  fetch(`${url}/api/users/block/${userId}`, {
+      method: "PUT",
+      credentials: "include"
   }).then((response) => response.json());
+
+export const unblockUser = (userId) =>
+    fetch(`${url}/api/users/unblock/${userId}`, {
+        method: "PUT",
+        credentials: "include"
+    }).then((response) => response.json());
 
 export const editUser = (user) =>
     fetch(`${url}/api/users`, {
