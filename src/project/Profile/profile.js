@@ -136,10 +136,7 @@ export default class Profile extends React.Component {
         }
       })
       .then((user) => this.setState({ loggedInUser: user }))
-      .catch((error) => {
-        document.getElementById("alert-box").innerHTML = error.message;
-        document.getElementById("alert-box").className = "alert alert-danger";
-      });
+      .catch((error) => {});
     if (this.props.username) {
       getUser(this.props.username)
         .then((response) => {
@@ -290,6 +287,7 @@ export default class Profile extends React.Component {
           {this.state.loggedInUser &&
             this.state.loggedInUser.username !== this.state.user.username &&
             this.state.user.friends &&
+            this.state.loggedInUser.username &&
             !this.areFriends(this.state.user, this.state.loggedInUser) && (
               <div className="d-flex justify-content-center">
                 <button
