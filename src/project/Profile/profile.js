@@ -167,7 +167,10 @@ export default class Profile extends React.Component {
           }
         })
         .then((user) =>
-          this.setState({ user: user }, () => {
+            getUser(user.username)
+                .then(response => response.json())
+                .then(actualUser =>
+          this.setState({ user: actualUser }, () => {
             if (this.state.user.role === "user") {
               findReviewsForUser(this.state.user._id).then((reviews) => {
                 this.setState({ reviews: reviews });
@@ -181,7 +184,7 @@ export default class Profile extends React.Component {
               });
             }
           })
-        )
+        ))
         .catch((error) => {
           document.getElementById("alert-box").innerHTML = error.message;
           document.getElementById("alert-box").className = "alert alert-danger";
