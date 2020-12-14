@@ -72,7 +72,7 @@ export default class Login extends React.Component {
           <button
             className="btn btn-primary"
             onClick={() => {
-              this.props.history.push("/register");
+              this.props.history.push("/policy");
             }}
           >
             Register
