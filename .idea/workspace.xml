@@ -4,7 +4,6 @@
     <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Profile/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Profile/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/SearchDetails/MovieDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/SearchDetails/MovieDetail.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +113,7 @@
       <workItem from="1607526690034" duration="3735000" />
       <workItem from="1607739944979" duration="13131000" />
       <workItem from="1607803403701" duration="16721000" />
-      <workItem from="1607881047755" duration="19937000" />
+      <workItem from="1607881047755" duration="21017000" />
     </task>
     <task id="LOCAL-00001" summary="project prototype for movie search">
       <created>1604185740372</created>
@@ -228,7 +227,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607900587321</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Improved on user blocking/unblocking">
+      <created>1607934596637</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607934596637</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added basic friends functionality">
+      <created>1607934723405</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1607934723405</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,17 +276,18 @@
     <MESSAGE value="Fixed a bug that crashes the app if searching for a string that returns no movies" />
     <MESSAGE value="Refactored search functionality into its own component" />
     <MESSAGE value="Improved on user blocking/unblocking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved on user blocking/unblocking" />
+    <MESSAGE value="Added basic friends functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic friends functionality" />
   </component>
   <component name="WindowStateProjectService">
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604186898652">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1604186898652" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607900586131">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607934722695">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607900586131" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607934722695" />
     <state x="674" y="239" key="FileChooserDialogImpl" timestamp="1606864125514">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -294,14 +308,18 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state width="1556" height="181" key="GridCell.Tab.0.right/0.0.1600.870@0.0.1600.870" timestamp="1607889631409" />
-    <state x="134" y="109" key="MergeDialog" timestamp="1607741729291">
+    <state x="134" y="109" key="MergeDialog" timestamp="1607935029146">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="134" y="109" key="MergeDialog/0.0.1600.870@0.0.1600.870" timestamp="1607741729291" />
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607900593018">
+    <state x="134" y="109" key="MergeDialog/0.0.1600.870@0.0.1600.870" timestamp="1607935029146" />
+    <state x="375" y="131" width="724" height="529" key="MultipleFileMergeDialog" timestamp="1607935039792">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607900593018" />
+    <state x="375" y="131" width="724" height="529" key="MultipleFileMergeDialog/0.0.1600.870@0.0.1600.870" timestamp="1607935039792" />
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607935141718">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607935141718" />
     <state x="641" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607198917991">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
