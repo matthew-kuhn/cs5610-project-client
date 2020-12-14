@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +100,7 @@
       <workItem from="1607739944979" duration="13131000" />
       <workItem from="1607803403701" duration="16721000" />
       <workItem from="1607881047755" duration="21600000" />
-      <workItem from="1607954915278" duration="7571000" />
+      <workItem from="1607954915278" duration="7873000" />
     </task>
     <task id="LOCAL-00001" summary="project prototype for movie search">
       <created>1604185740372</created>
@@ -244,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607972350546</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Adding Matthew's changes">
+      <created>1607982481771</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1607982481771</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,17 +287,18 @@
     <MESSAGE value="Added basic friends functionality" />
     <MESSAGE value="Merging friend functionality with style changes" />
     <MESSAGE value="Fixing blocking/unblocking behavior" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing blocking/unblocking behavior" />
+    <MESSAGE value="Adding Matthew's changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Matthew's changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604186898652">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1604186898652" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607972349503">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607982479980">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607972349503" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607982479980" />
     <state x="674" y="239" key="FileChooserDialogImpl" timestamp="1606864125514">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -321,10 +327,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="375" y="131" width="724" height="529" key="MultipleFileMergeDialog/0.0.1600.870@0.0.1600.870" timestamp="1607935039792" />
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607972354137">
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607982486177">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607972354137" />
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607982486177" />
     <state x="641" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607198917991">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
