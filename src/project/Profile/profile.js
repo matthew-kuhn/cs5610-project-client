@@ -524,7 +524,7 @@ export default class Profile extends React.Component {
                   <li
                     key={reply._id}
                     id={reply._id + "-li"}
-                    className="list-group-item unique-color lighten-1"
+                    className="list-group-item unique-color-dark lighten-1"
                   >
                     <div id={reply._id + "-text"}>{reply.text}</div>
                     <input
