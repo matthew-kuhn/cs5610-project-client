@@ -68,6 +68,15 @@ export default class Profile extends React.Component {
     document.getElementById(reviewId + "-li").remove();
   };
 
+  deleteReply = (reviewId, replyId) => {
+    deleteReply(reviewId, replyId).then(
+      findRepliesForUser(this.state.user._id).then((replies) =>
+        this.setState({ replies: replies })
+      )
+    );
+    document.getElementById(replyId + "-li").remove();
+  };
+
   startEditing = (review) => {
     document.getElementById(`${review._id}-edit`).className =
       "btn btn-warning d-none fa fa-pencil";
@@ -289,6 +298,7 @@ export default class Profile extends React.Component {
     this.setState({
       loggedInUser: tempUser,
     });
+
     editUser(this.state.loggedInUser).then((response) => {
       this.setState({
         loggedInUser: response,
@@ -550,7 +560,9 @@ export default class Profile extends React.Component {
                       !this.state.editingMode && (
                         <button
                           className="btn btn-danger fa fa-trash pull-right"
-                          onClick={() => this.deleteReview(reply._id)}
+                          onClick={() =>
+                            this.deleteReply(reply.parent, reply._id)
+                          }
                         >
                           {/* <b>Delete</b> */}
                         </button>
