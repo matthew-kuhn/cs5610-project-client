@@ -14,6 +14,7 @@ import {
 } from "../../services/reviewService";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 import "./profile.style.css";
+import {Link} from "react-router-dom";
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class Profile extends React.Component {
         password: "",
         name: "",
         blockedUsers: [],
+        friends: []
       },
       reviews: [],
       loggedInUser: {},
@@ -37,6 +39,7 @@ export default class Profile extends React.Component {
         password: "",
         name: "",
         blockedUsers: [],
+        friends: []
       },
     };
   }
@@ -122,6 +125,17 @@ export default class Profile extends React.Component {
       tempUser: { ...this.state.tempUser, name: evt.target.value },
     });
   };
+
+  // deleteFriend = (friend) => {
+  //   let theirFriends = friend.friends.filter(user => user._id !== this.state.user._id).map(user => user._id)
+  //   friend = {...friend, friends: theirFriends}
+  //   let myFriends = this.state.user.friends.filter(user => user._id !== friend._id).map(user => user._id)
+  //   this.setState({user: {...this.state.user, friends: myFriends}})
+  //   console.log(friend)
+  //   console.log(this.state.user)
+  //   editUser(friend).then(response => console.log(''))
+  //   editUser(this.state.user).then(response => console.log(''))
+  // }
 
   componentDidMount() {
     getSessionUser()
@@ -273,6 +287,27 @@ export default class Profile extends React.Component {
                 onChange={this.setPassword}
               />
             </div>
+          )}
+          {this.state.loggedInUser &&
+          this.state.loggedInUser.username === this.state.user.username && (
+              <div>
+                <h3 className="d-flex justify-content-center">
+                  Friends
+                </h3>
+                <ul className="list-group">
+                {this.state.user.friends.map(friend => (
+                    <li key={friend._id} className="list-group-item unique-color lighten-1">
+                      <Link to={`/profile/${friend.username}`}>
+                        {friend.username}
+                      </Link>
+                      {/*<button className="btn btn-primary" onClick={() => this.deleteFriend(friend)}>*/}
+                      {/*  Delete friend*/}
+                      {/*</button>*/}
+                    </li>
+                ))
+                }
+                </ul>
+              </div>
           )}
           {this.state.user.role === "user" && (
             <div>

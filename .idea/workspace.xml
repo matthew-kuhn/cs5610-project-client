@@ -4,7 +4,7 @@
     <list default="true" id="91c1d126-e073-439b-9cfe-27a2c9cfd740" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Profile/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Profile/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/SearchDetails/MovieDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/SearchDetails/MovieDetail.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +114,7 @@
       <workItem from="1607526690034" duration="3735000" />
       <workItem from="1607739944979" duration="13131000" />
       <workItem from="1607803403701" duration="16721000" />
-      <workItem from="1607881047755" duration="9720000" />
+      <workItem from="1607881047755" duration="19937000" />
     </task>
     <task id="LOCAL-00001" summary="project prototype for movie search">
       <created>1604185740372</created>
@@ -221,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607839063269</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Improved on user blocking/unblocking">
+      <created>1607900587321</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607900587321</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,17 +262,18 @@
     <MESSAGE value="Changed find reviews for user to use ids instead of usernames" />
     <MESSAGE value="Fixed a bug that crashes the app if searching for a string that returns no movies" />
     <MESSAGE value="Refactored search functionality into its own component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored search functionality into its own component" />
+    <MESSAGE value="Improved on user blocking/unblocking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved on user blocking/unblocking" />
   </component>
   <component name="WindowStateProjectService">
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604186898652">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="399" y="59" width="1092" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1604186898652" />
-    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607839062531">
+    <state x="358" y="0" key="CommitChangelistDialog2" timestamp="1607900586131">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607839062531" />
+    <state x="358" y="0" key="CommitChangelistDialog2/0.0.1600.870@0.0.1600.870" timestamp="1607900586131" />
     <state x="674" y="239" key="FileChooserDialogImpl" timestamp="1606864125514">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -290,10 +298,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="134" y="109" key="MergeDialog/0.0.1600.870@0.0.1600.870" timestamp="1607741729291" />
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607839068756">
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2" timestamp="1607900593018">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607839068756" />
+    <state x="378" y="274" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1607900593018" />
     <state x="641" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607198917991">
       <screen x="0" y="0" width="1600" height="870" />
     </state>

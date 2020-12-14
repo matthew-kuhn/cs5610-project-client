@@ -5,7 +5,7 @@ import {
   findReviewsForMovie,
   flagReview,
 } from "../../services/reviewService";
-import { getSessionUser } from "../../services/userService";
+import {editUser, getSessionUser, getUser} from "../../services/userService";
 import { Link } from "react-router-dom";
 
 class MovieDetail extends React.Component {
@@ -16,7 +16,7 @@ class MovieDetail extends React.Component {
       movie: "",
       review: "",
       fetchedReviews: [],
-      user: { username: "", blocked: false },
+      user: { username: "", blocked: false, friends: [] },
     };
   }
 
@@ -39,7 +39,7 @@ class MovieDetail extends React.Component {
       })
       .then((user) =>
         this.setState({
-          user: { username: user.username, blocked: user.blocked },
+          user: user,
         })
       )
       .catch((error) => {});
@@ -72,6 +72,17 @@ class MovieDetail extends React.Component {
   flagReview = (review) => {
     flagReview(review).then((response) => console.log(response));
   };
+
+  addFriend = async (friendName) => {
+    let response = await getUser(friendName);
+    let friend = await response.json();
+    friend.friends.push(this.state.user._id);
+    this.setState({user: {...this.state.user, friends: [...this.state.user.friends, friend._id]}})
+    console.log(friend);
+    console.log(this.state.user)
+    editUser(friend).then(response => console.log(response))
+    editUser(this.state.user).then(response => console.log(response))
+  }
 
   render() {
     return (
@@ -164,6 +175,14 @@ class MovieDetail extends React.Component {
                     Flag review
                   </button>
                 )}
+                {(this.state.user.username !== "" && !this.state.user.friends.includes(review.userId) && this.state.user._id !== review.userId) &&
+                  <button
+                      className="btn btn-primary"
+                      onClick={() => this.addFriend(review.username)}
+                  >
+                    Add Friend
+                  </button>
+                }
               </li>
             ))}
           </ul>
