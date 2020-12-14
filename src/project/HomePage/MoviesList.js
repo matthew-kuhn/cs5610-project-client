@@ -6,6 +6,7 @@ import logo from "../../clapperboard-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./moviesList.style.css";
+import "../../index.css";
 
 export class MoviesList extends React.Component {
   constructor(props) {

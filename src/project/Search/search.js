@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import "../../index.css";
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -55,7 +58,7 @@ export default class Search extends React.Component {
               value={this.state.title}
             />
             <button
-              className="btn default-color fa fa-search"
+              className="btn default-color"
               onClick={() => {
                 if (this.state.title !== "") {
                   this.props.history.push(`/search/${this.state.title}`);
@@ -64,7 +67,7 @@ export default class Search extends React.Component {
                 }
               }}
             >
-              {/* Search */}
+              <FontAwesomeIcon icon={faSearch} size="3x" />
             </button>
           </div>
           {!this.state.searchHasResults && (

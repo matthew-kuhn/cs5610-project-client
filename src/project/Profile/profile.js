@@ -14,13 +14,20 @@ import {
 } from "../../services/reviewService";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 import "./profile.style.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { username: "", role: "", blocked: false, password: "", name: "", blockedUsers: []},
+      user: {
+        username: "",
+        role: "",
+        blocked: false,
+        password: "",
+        name: "",
+        blockedUsers: [],
+      },
       reviews: [],
       loggedInUser: {},
       editingMode: false,
@@ -30,7 +37,7 @@ export default class Profile extends React.Component {
         blocked: false,
         password: "",
         name: "",
-        blockedUsers: []
+        blockedUsers: [],
       },
     };
   }
@@ -57,13 +64,15 @@ export default class Profile extends React.Component {
   startEditing = (review) => {
     document.getElementById(`${review._id}-edit`).className =
       "btn btn-warning d-none fa fa-pencil";
-    document.getElementById(`${review._id}-save`).className = "btn btn-success fa fa-check pull-right";
+    document.getElementById(`${review._id}-save`).className =
+      "btn btn-success fa fa-check pull-right";
     document.getElementById(`${review._id}-text`).className = "d-none";
     document.getElementById(`${review._id}-input`).className = "form-control";
   };
 
   finishEditing = (review) => {
-    document.getElementById(`${review._id}-edit`).className = "btn btn-warning fa fa-pencil pull-right";
+    document.getElementById(`${review._id}-edit`).className =
+      "btn btn-warning fa fa-pencil pull-right";
     document.getElementById(`${review._id}-save`).className =
       "btn btn-success d-none fa fa-check";
     document.getElementById(`${review._id}-text`).className = "";
@@ -88,12 +97,12 @@ export default class Profile extends React.Component {
     blockUser(username).then((response) => {
       console.log(username + " blocked");
       getUser(this.state.user.username)
-          .then(response => response.json())
-          .then(user => this.setState({user: user}))
+        .then((response) => response.json())
+        .then((user) => this.setState({ user: user }));
     });
 
   unblockUser = (userId) =>
-      unblockUser(userId).then((response) => console.log(userId + " unblocked"));
+    unblockUser(userId).then((response) => console.log(userId + " unblocked"));
 
   setEditingMode = () => this.setState({ editingMode: true });
 
@@ -194,11 +203,13 @@ export default class Profile extends React.Component {
             role="alert"
             id="alert-box"
           ></div>
-
+          <h1 className="d-flex justify-content-center">
+            {this.state.user.username}
+          </h1>
           {!this.state.editingMode &&
             this.state.user.username === this.state.loggedInUser.username && (
               <button
-				className="btn btn-sm btn-primary float-right"
+                className="btn btn-sm btn-primary"
                 onClick={() => {
                   this.setEditingMode();
                   this.setState({ tempUser: this.state.user });
@@ -209,7 +220,6 @@ export default class Profile extends React.Component {
                 </h6>
               </button>
             )}
-          <h1 id="userName">{this.state.user.username}</h1>
           <br />
           {this.state.loggedInUser &&
             this.state.loggedInUser.username === this.state.user.username && (
@@ -220,7 +230,7 @@ export default class Profile extends React.Component {
 
           {this.state.editingMode && (
             <button
-			  className="btn btn-success"
+              className="btn btn-success"
               onClick={() => {
                 this.setNormalMode();
                 editUser(this.state.tempUser).then((user) =>
@@ -267,23 +277,23 @@ export default class Profile extends React.Component {
             </div>
           )}
           {this.state.loggedInUser &&
-          this.state.loggedInUser.username === this.state.user.username && (
+            this.state.loggedInUser.username === this.state.user.username && (
               <div>
-                <h3 className="d-flex justify-content-center">
-                  Friends
-                </h3>
+                <h3 className="d-flex justify-content-center">Friends</h3>
                 <ul className="list-group">
-                  {this.state.user.friends.map(friend => (
-                      <li key={friend._id} className="list-group-item unique-color lighten-1">
-                        <Link to={`/profile/${friend.username}`}>
-                          {friend.username}
-                        </Link>
-                      </li>
-                  ))
-                  }
+                  {this.state.user.friends.map((friend) => (
+                    <li
+                      key={friend._id}
+                      className="list-group-item unique-color lighten-1"
+                    >
+                      <Link to={`/profile/${friend.username}`}>
+                        {friend.username}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
-          )}
+            )}
           {this.state.user.role === "user" && (
             <div>
               {this.state.user.blocked && (
@@ -309,7 +319,7 @@ export default class Profile extends React.Component {
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-						  className="btn btn-warning fa fa-pencil pull-right"
+                          className="btn btn-warning fa fa-pencil pull-right"
                           id={review._id + "-edit"}
                           onClick={() => this.startEditing(review)}
                         >
@@ -320,7 +330,7 @@ export default class Profile extends React.Component {
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-						  className="btn btn-success d-none fa fa-check pull-right"
+                          className="btn btn-success d-none fa fa-check pull-right"
                           id={review._id + "-save"}
                           onClick={() => this.finishEditing(review)}
                         >
@@ -331,7 +341,7 @@ export default class Profile extends React.Component {
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-						  className="btn btn-danger fa fa-trash pull-right"
+                          className="btn btn-danger fa fa-trash pull-right"
                           onClick={() => this.deleteReview(review._id)}
                         >
                           {/* <b>Delete</b> */}
@@ -347,23 +357,30 @@ export default class Profile extends React.Component {
               <h3>Blocked Users</h3>
               <ul className="list-group">
                 {this.state.user.blockedUsers.map((blockedUser) => (
-                    <li key={blockedUser._id}
-                        className="list-group-item unique-color lighten-1"
+                  <li
+                    key={blockedUser._id}
+                    className="list-group-item unique-color lighten-1"
+                  >
+                    {blockedUser.username}
+                    <button
+                      className="btn btn-success"
+                      onClick={() => {
+                        this.unblockUser(blockedUser._id);
+                        const newBlockedUsers = this.state.user.blockedUsers.filter(
+                          (user) => user._id !== blockedUser._id
+                        );
+                        this.setState({
+                          user: {
+                            ...this.state.user,
+                            blockedUsers: newBlockedUsers,
+                          },
+                        });
+                      }}
                     >
-                      {blockedUser.username}
-                      <button
-                          className="btn btn-success"
-                          onClick={() => {
-                            this.unblockUser(blockedUser._id);
-                            const newBlockedUsers = this.state.user.blockedUsers.filter(user => user._id !== blockedUser._id)
-                            this.setState({user: {...this.state.user, blockedUsers: newBlockedUsers}})
-                          }}
-                      >
-                        Unblock User
-                      </button>
-                    </li>
-                ))
-                }
+                      Unblock User
+                    </button>
+                  </li>
+                ))}
               </ul>
               <h3>Flagged Reviews</h3>
               <ul className="list-group">
@@ -379,14 +396,16 @@ export default class Profile extends React.Component {
                     >
                       Delete
                     </button>
-                    {!this.state.user.blockedUsers.map(user => user._id).includes(review.userId) &&
+                    {!this.state.user.blockedUsers
+                      .map((user) => user._id)
+                      .includes(review.userId) && (
                       <button
-                          className="btn btn-danger"
-                          onClick={() => this.blockUser(review.userId)}
+                        className="btn btn-danger"
+                        onClick={() => this.blockUser(review.userId)}
                       >
                         Block User
                       </button>
-                    }
+                    )}
                   </li>
                 ))}
               </ul>

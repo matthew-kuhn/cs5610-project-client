@@ -5,9 +5,10 @@ import {
   findReviewsForMovie,
   flagReview,
 } from "../../services/reviewService";
-import {editUser, getSessionUser, getUser} from "../../services/userService";
+import { editUser, getSessionUser, getUser } from "../../services/userService";
 import { Link } from "react-router-dom";
-import './movieDetail.style.css'
+import "./movieDetail.style.css";
+import "../../index.css";
 class MovieDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -77,16 +78,21 @@ class MovieDetail extends React.Component {
     let response = await getUser(friendName);
     let friend = await response.json();
     friend.friends.push(this.state.user._id);
-    this.setState({user: {...this.state.user, friends: [...this.state.user.friends, friend._id]}})
+    this.setState({
+      user: {
+        ...this.state.user,
+        friends: [...this.state.user.friends, friend._id],
+      },
+    });
     console.log(friend);
-    console.log(this.state.user)
-    editUser(friend).then(response => console.log(response))
-    editUser(this.state.user).then(response => console.log(response))
-  }
+    console.log(this.state.user);
+    editUser(friend).then((response) => console.log(response));
+    editUser(this.state.user).then((response) => console.log(response));
+  };
 
   render() {
     return (
-      <div className="d-flex justify-content-center fill text-white">
+      <div className="d-flex justify-content-center text-white">
         <div className="col-10">
           <div
             className="alert alert-danger d-none"
@@ -166,7 +172,10 @@ class MovieDetail extends React.Component {
                 className="list-group-item unique-color lighten-1"
               >
                 {review.text}-{" "}
-                <Link style={{color: "pink"}} to={"/profile/" + review.username}>
+                <Link
+                  style={{ color: "pink" }}
+                  to={"/profile/" + review.username}
+                >
                   {review.username}
                 </Link>
                 {this.state.user.username !== "" && (
@@ -177,14 +186,16 @@ class MovieDetail extends React.Component {
                     Flag review
                   </button>
                 )}
-                {(this.state.user.username !== "" && !this.state.user.friends.includes(review.userId) && this.state.user._id !== review.userId) &&
-                  <button
+                {this.state.user.username !== "" &&
+                  !this.state.user.friends.includes(review.userId) &&
+                  this.state.user._id !== review.userId && (
+                    <button
                       className="btn btn-primary"
                       onClick={() => this.addFriend(review.username)}
-                  >
-                    Add Friend
-                  </button>
-                }
+                    >
+                      Add Friend
+                    </button>
+                  )}
               </li>
             ))}
           </ul>

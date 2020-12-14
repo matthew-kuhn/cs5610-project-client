@@ -1,21 +1,18 @@
-#userName{
-    margin-left: 41%;
-}
-button.btn-warning{
-    border-radius: 40px;
-    text-transform: none;
+button.btn-warning {
+  border-radius: 40px;
+  text-transform: none;
 }
 
-button.btn-danger{
-    border-radius: 40px;
-    text-transform: none;
+button.btn-danger {
+  border-radius: 40px;
+  text-transform: none;
 }
-button.btn-primary{
-    border-radius: 40px;
-    text-transform: none;
+button.btn-primary {
+  border-radius: 40px;
+  text-transform: none;
 }
 
-button.btn-success{
-    border-radius: 40px;
-    text-transform: none;
+button.btn-success {
+  border-radius: 40px;
+  text-transform: none;
 }
