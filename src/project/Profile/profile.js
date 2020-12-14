@@ -207,15 +207,38 @@ export default class Profile extends React.Component {
     });
   };
 
-  removeFriend = async (friendName) => {
-    let response = await getUser(friendName);
-    let friend = await response.json();
-    friend.friends.push(this.state.loggedInUser._id);
+  removeFriend = async () => {
+    let newFriends = [];
+    for (let i = 0; i < this.state.user.friends.length; i++) {
+      if (this.state.user.friends[i]._id !== this.state.loggedInUser._id) {
+        newFriends.push(this.state.user.friends[i]._id);
+      }
+    }
+    let tempUser = this.state.user;
+    tempUser.friends = newFriends;
     this.setState({
-      loggedInUser: {
-        ...this.state.loggedInUser,
-        friends: [...this.state.loggedInUser.friends, friend._id],
-      },
+      user: tempUser,
+    });
+    editUser(this.state.user).then((response) =>
+      this.setState({
+        user: response,
+      })
+    );
+    newFriends = [];
+    for (let i = 0; i < this.state.loggedInUser.friends.length; i++) {
+      if (this.state.loggedInUser.friends[i]._id !== this.state.user._id) {
+        newFriends.push(this.state.loggedInUser.friends[i]._id);
+      }
+    }
+    tempUser = this.state.loggedInUser;
+    tempUser.friends = newFriends;
+    this.setState({
+      loggedInUser: tempUser,
+    });
+    editUser(this.state.loggedInUser).then((response) => {
+      this.setState({
+        loggedInUser: response,
+      });
     });
   };
 
@@ -276,6 +299,23 @@ export default class Profile extends React.Component {
                   }
                 >
                   <h6>Add Friend</h6>
+                </button>
+              </div>
+            )}
+          {this.state.loggedInUser &&
+            this.state.loggedInUser.username !== this.state.user.username &&
+            this.state.user.friends &&
+            this.areFriends(this.state.user, this.state.loggedInUser) && (
+              <div className="d-flex justify-content-center">
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() =>
+                    this.removeFriend().then(
+                      this.setState({ state: this.state })
+                    )
+                  }
+                >
+                  <h6>Remove Friend</h6>
                 </button>
               </div>
             )}
