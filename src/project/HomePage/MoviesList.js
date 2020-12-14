@@ -107,30 +107,32 @@ export class MoviesList extends React.Component {
               <div>
                 <h3>Flagged Reviews</h3>
                 <ul className="list-group">
-                  {this.state.reviews.map((review) => (
-                    <li
-                      key={review._id}
-                      className="list-group-item unique-color lighten-1"
-                    >
-                      {review.text}- {review.username}
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => this.deleteReviewAdmin(review._id)}
+                  {this.state.reviews
+                    .filter((review) => review.flagged === true)
+                    .map((review) => (
+                      <li
+                        key={review._id}
+                        className="list-group-item unique-color lighten-1"
                       >
-                        Delete
-                      </button>
-                      {!this.state.user.blockedUsers
-                        .map((user) => user._id)
-                        .includes(review.userId) && (
+                        {review.text}- {review.username}
                         <button
-                          className="btn btn-danger"
-                          onClick={() => this.blockUser(review.userId)}
+                          className="btn btn-primary"
+                          onClick={() => this.deleteReviewAdmin(review._id)}
                         >
-                          Block User
+                          Delete
                         </button>
-                      )}
-                    </li>
-                  ))}
+                        {!this.state.user.blockedUsers
+                          .map((user) => user._id)
+                          .includes(review.userId) && (
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => this.blockUser(review.userId)}
+                          >
+                            Block User
+                          </button>
+                        )}
+                      </li>
+                    ))}
                 </ul>
               </div>
             )}
