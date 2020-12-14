@@ -34,6 +34,7 @@ class MovieDetail extends React.Component {
     getSessionUser()
       .then((response) => {
         if (response.status !== 200) {
+          throw new Error();
         } else {
           return response.json();
         }
