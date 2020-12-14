@@ -54,7 +54,7 @@ export class MoviesList extends React.Component {
             src={logo}
             alt="Moview logo"
             id="logo"
-            className="justify-content-center"
+            className="rounded mx-auto d-block"
           />
           {this.state.user.username === "" && (
             <div className="d-flex justify-content-center">
@@ -75,19 +75,19 @@ export class MoviesList extends React.Component {
           <br />
           <br />
           {this.state.user.username !== "" && (
-            <h3 className="d-flex justify-content-center">
+            <h3 className="d-flex justify-content-center col-12">
               Welcome Back, {this.state.user.username}!
             </h3>
           )}
           <br />
           <div className="row">
             <input
-              className="form-control col-8"
+              className="form-control col-12 col-md-8"
               onChange={(event) => this.titleChange(event)}
               value={this.state.title}
             />
             <button
-              className="btn btn-sm default-color col-2"
+              className="btn btn-sm default-color col-12 col-md-3"
               id="round-btn"
               onClick={this.searchMovies}
             >

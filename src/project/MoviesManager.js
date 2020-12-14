@@ -59,7 +59,7 @@ export default class MoviesManager extends React.Component {
 
   render() {
     return (
-      <div className="fill special-color">
+      <div className="special-color container-fluid">
         <Router>
           <div className="nav navbar red darken-3 text-white">
             <Link className="text-white nav-link unique-color darken-1" to="/">
