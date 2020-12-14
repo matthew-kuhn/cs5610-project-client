@@ -55,7 +55,7 @@ export default class Search extends React.Component {
               value={this.state.title}
             />
             <button
-              className="btn default-color col-2"
+              className="btn default-color fa fa-search"
               onClick={() => {
                 if (this.state.title !== "") {
                   this.props.history.push(`/search/${this.state.title}`);
@@ -64,7 +64,7 @@ export default class Search extends React.Component {
                 }
               }}
             >
-              Search
+              {/* Search */}
             </button>
           </div>
           {!this.state.searchHasResults && (

@@ -87,12 +87,12 @@ export class MoviesList extends React.Component {
               value={this.state.title}
             />
             <button
-              className="btn btn-sm default-color col-2"
-              id="round-btn"
+              className="btn btn-sm default-color col-0 fa fa-search"
+              id="search-btn"
               onClick={this.searchMovies}
             >
               <h3>
-                <b>Search</b>
+                {/* <b>Search</b> */}
               </h3>
             </button>
           </div>
@@ -111,8 +111,9 @@ export class MoviesList extends React.Component {
                 >
                   {review.movieTitle}: {review.text} -{" "}
                   <Link
-                    className="text-white"
+                    // className="text-white"
                     to={"/profile/" + review.username}
+                    style={{color: "pink"}}
                   >
                     {review.username}
                   </Link>
