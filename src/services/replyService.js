@@ -9,7 +9,7 @@ export const createReply = (text, parent) =>
   });
 
 export const findRepliesForUser = (userId) =>
-  fetch(`${url}/users/${userId}/replies`, {
+  fetch(`${url}/api/users/${userId}/replies`, {
     credentials: "include",
   }).then((response) => response.json());
 
