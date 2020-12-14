@@ -111,8 +111,9 @@ export class MoviesList extends React.Component {
                 >
                   {review.movieTitle}: {review.text} -{" "}
                   <Link
-                    className="text-white"
+                    // className="text-white"
                     to={"/profile/" + review.username}
+                    style={{color: "pink"}}
                   >
                     {review.username}
                   </Link>
