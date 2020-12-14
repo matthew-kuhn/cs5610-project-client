@@ -23,7 +23,7 @@ export default class Login extends React.Component {
     login(this.state.username, this.state.password)
       .then((response) => {
         if (response.status !== 200) {
-          throw new Error("login failed");
+          throw new Error("Invalid Username or Password");
         } else {
           return response.json();
         }
