@@ -34,26 +34,32 @@ export default class Policy extends React.Component {
             certain amount of information that is collected in the operation of
             this website. This privacy policy is meant to clarify the extent of
             the information collected, what we use this information for, and how
-            our users can be assured of the safety of their information For our
-            users, we request minimal personal information and only require that
+            our users can be assured of the safety of their information.
+          </p>
+          <p>
+            For our users, we request minimal personal information and only require that
             you provide your name to us. During the usage of our site, we
             collect information such as personal movie preferences via the
             movies visited or reviewed and the content of those reviews. We also
-            collect discussion on those reviews. We want to assure our users
-            that we do not share your personal information in any form to any
+            collect discussion on those reviews.
+          </p>
+          <p>
+            We want to assure our users that we do not share your personal information in any form to any
             third party vendors. This information is for academic purposes only
             and will only be shared to internal members of Northeastern
             University. We collect the above information purely in order to
             aggregate current opinions on movies and to use to that information
             in order to improve the site for customer experience and to research
-            trends in movie-goers. Network specific information such as IP
-            address or cookies will be stored for a period of one week only to
-            necessitate the customer experience. And similarly we do not share
-            this information in any way to third party vendors. After this
-            period, these data will be erased to ensure customer
-            confidentiality. If you wish to opt out of this information sharing,
-            please contact us at shi.jiaqi@northeastern.edu and we will erase
-            all of your data collected from our website.
+            trends in movie-goers.
+          </p>
+          <p>
+            Network specific information such as IP address or cookies will be stored for a period of one week only
+            to necessitate the customer experience. And similarly we do not share this information in any way to third
+            party vendors. After this period, these data will be erased to ensure customer confidentiality.
+          </p>
+          <p>
+            If you wish to opt out of this information sharing, please contact us at shi.jiaqi@northeastern.edu
+            and we erase all of your data collected from our website.
           </p>
         </div>
         <div className="form-check">
