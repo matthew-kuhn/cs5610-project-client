@@ -152,7 +152,6 @@ export default class Profile extends React.Component {
         .then((user) =>
           this.setState({ user: user }, () =>
             findReviewsForUser(this.state.user._id).then((reviews) => {
-              console.log(reviews);
               this.setState({ reviews: reviews });
             })
           )
@@ -193,6 +192,42 @@ export default class Profile extends React.Component {
     }
   }
 
+  addFriend = async () => {
+    this.state.user.friends.push(this.state.loggedInUser._id);
+    editUser(this.state.user).then((response) =>
+      this.setState({
+        user: response,
+      })
+    );
+    this.state.loggedInUser.friends.push(this.state.user._id);
+    editUser(this.state.loggedInUser).then((response) => {
+      this.setState({
+        loggedInUser: response,
+      });
+    });
+  };
+
+  removeFriend = async (friendName) => {
+    let response = await getUser(friendName);
+    let friend = await response.json();
+    friend.friends.push(this.state.loggedInUser._id);
+    this.setState({
+      loggedInUser: {
+        ...this.state.loggedInUser,
+        friends: [...this.state.loggedInUser.friends, friend._id],
+      },
+    });
+  };
+
+  areFriends = (user1, user2) => {
+    for (let i = 0; i < user1.friends.length; i++) {
+      if (user1.friends[i]._id === user2._id) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   render() {
     return (
       <div className="d-flex justify-content-center fill text-white">
@@ -223,9 +258,26 @@ export default class Profile extends React.Component {
           <br />
           {this.state.loggedInUser &&
             this.state.loggedInUser.username === this.state.user.username && (
-              <h3 className="d-flex justify-content-center">
-                Role: {this.state.user.role}
-              </h3>
+              <div className="d-flex justify-content-center ">
+                <h3 className="d-flex justify-content-center">
+                  Role: {this.state.user.role}
+                </h3>
+              </div>
+            )}
+          {this.state.loggedInUser &&
+            this.state.loggedInUser.username !== this.state.user.username &&
+            this.state.user.friends &&
+            !this.areFriends(this.state.user, this.state.loggedInUser) && (
+              <div className="d-flex justify-content-center">
+                <button
+                  className="btn btn-success btn-sm"
+                  onClick={() =>
+                    this.addFriend().then(this.setState({ state: this.state }))
+                  }
+                >
+                  <h6>Add Friend</h6>
+                </button>
+              </div>
             )}
 
           {this.state.editingMode && (
@@ -233,9 +285,10 @@ export default class Profile extends React.Component {
               className="btn btn-success"
               onClick={() => {
                 this.setNormalMode();
-                editUser(this.state.tempUser).then((user) =>
-                  this.setState({ user: user })
-                );
+                editUser(this.state.tempUser).then((user) => {
+                  this.setState({ user: user });
+                  this.setState({ loggedInUser: user });
+                });
               }}
             >
               <h5>
@@ -286,7 +339,10 @@ export default class Profile extends React.Component {
                       key={friend._id}
                       className="list-group-item unique-color lighten-1"
                     >
-                      <Link to={`/profile/${friend.username}`}>
+                      <Link
+                        className="text-white"
+                        to={`/profile/${friend.username}`}
+                      >
                         {friend.username}
                       </Link>
                     </li>
