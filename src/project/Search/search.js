@@ -81,7 +81,7 @@ export default class Search extends React.Component {
                 key={movie.imdbID}
                 className="card col-lg-3 col-md-4 col-sm-6"
                 onClick={() =>
-                  this.props.history.push(`/movie/${movie.imdbID}`)
+                  this.props.history.push(`/details/${movie.imdbID}`)
                 }
               >
                 <img
@@ -90,7 +90,7 @@ export default class Search extends React.Component {
                   alt="Movie poster"
                 ></img>
                 <div className="card-body">
-                  <Link className="card-title" to={`/movie/${movie.imdbID}`}>
+                  <Link className="card-title" to={`/details/${movie.imdbID}`}>
                     {movie.Title}
                   </Link>
                 </div>

@@ -124,7 +124,7 @@ export default class MoviesManager extends React.Component {
           />
           <Route
             exact
-            path={"/movie/:movieId"}
+            path={"/details/:movieId"}
             render={(props) => (
               <MovieDetail {...props} movieId={props.match.params.movieId} />
             )}
