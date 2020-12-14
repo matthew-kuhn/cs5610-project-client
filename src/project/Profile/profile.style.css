@@ -1,7 +1,3 @@
-#round-btn {
-    border-radius: 40px;
-    text-transform: none;
-}
 #userName{
     margin-left: 41%;
 }
@@ -11,6 +7,15 @@ button.btn-warning{
 }
 
 button.btn-danger{
+    border-radius: 40px;
+    text-transform: none;
+}
+button.btn-primary{
+    border-radius: 40px;
+    text-transform: none;
+}
+
+button.btn-success{
     border-radius: 40px;
     text-transform: none;
 }

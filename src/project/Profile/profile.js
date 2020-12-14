@@ -53,16 +53,16 @@ export default class Profile extends React.Component {
 
   startEditing = (review) => {
     document.getElementById(`${review._id}-edit`).className =
-      "btn btn-warning d-none";
-    document.getElementById(`${review._id}-save`).className = "btn btn-success";
+      "btn btn-warning d-none fa fa-pencil";
+    document.getElementById(`${review._id}-save`).className = "btn btn-success fa fa-check";
     document.getElementById(`${review._id}-text`).className = "d-none";
     document.getElementById(`${review._id}-input`).className = "form-control";
   };
 
   finishEditing = (review) => {
-    document.getElementById(`${review._id}-edit`).className = "btn btn-warning";
+    document.getElementById(`${review._id}-edit`).className = "btn btn-warning fa fa-pencil pull-right";
     document.getElementById(`${review._id}-save`).className =
-      "btn btn-success d-none";
+      "btn btn-success d-none fa fa-check";
     document.getElementById(`${review._id}-text`).className = "";
     document.getElementById(
       `${review._id}-text`
@@ -189,7 +189,6 @@ export default class Profile extends React.Component {
             this.state.user.username === this.state.loggedInUser.username && (
               <button
 				className="btn btn-sm btn-primary float-right"
-				id="round-btn"
                 onClick={() => {
                   this.setEditingMode();
                   this.setState({ tempUser: this.state.user });
@@ -212,7 +211,6 @@ export default class Profile extends React.Component {
           {this.state.editingMode && (
             <button
 			  className="btn btn-success"
-			  id="round-btn"
               onClick={() => {
                 this.setNormalMode();
                 editUser(this.state.tempUser).then((user) =>
@@ -281,32 +279,32 @@ export default class Profile extends React.Component {
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-						  className="btn btn-warning"
+						  className="btn btn-warning fa fa-pencil pull-right"
                           id={review._id + "-edit"}
                           onClick={() => this.startEditing(review)}
                         >
-                          <b>Edit Review</b>
+                          {/* <b>Edit Review</b> */}
                         </button>
                       )}
                     {this.state.loggedInUser.username ===
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-						  className="btn btn-success d-none"
+						  className="btn btn-success d-none fa fa-check"
                           id={review._id + "-save"}
                           onClick={() => this.finishEditing(review)}
                         >
-                          Save
+                          {/* Save */}
                         </button>
                       )}
                     {this.state.loggedInUser.username ===
                       this.state.user.username &&
                       !this.state.editingMode && (
                         <button
-						  className="btn btn-danger"
+						  className="btn btn-danger fa fa-trash pull-right"
                           onClick={() => this.deleteReview(review._id)}
                         >
-                          <b>Delete</b>
+                          {/* <b>Delete</b> */}
                         </button>
                       )}
                   </li>

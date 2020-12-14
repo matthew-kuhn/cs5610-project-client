@@ -54,7 +54,7 @@ export class MoviesList extends React.Component {
                 <div className="col-8">
                     <br/>
                     <h1 className="d-flex justify-content-center">Moview</h1>
-                    <img src={logo} alt="Moview logo" id="logo" className="justify-content-center"/>
+                    <img className="d-flex justify-content-center" src={logo} id="logo" />
                     {this.state.user.username === "" && (
                         <div className="d-flex justify-content-center">
                             <button
@@ -86,11 +86,10 @@ export class MoviesList extends React.Component {
                             value={this.state.title}
                         />
                         <button
-                            className="btn btn-sm default-color col-2"
-                            id="round-btn"
+                            className="btn btn-sm col-0 default-color fa fa-search fa-4x"
+                            id="round-btnn"
                             onClick={this.searchMovies}
                         >
-                            <h3><b>Search</b></h3>
                         </button>
                     </div>
                     <h3>Recent Reviews</h3>
