@@ -27,7 +27,11 @@ export class MoviesList extends React.Component {
           return response.json();
         }
       })
-      .then((user) => this.setState({ user: { username: user.username } }))
+      .then((user) => {
+        if (user) {
+          this.setState({ user: user });
+        }
+      })
       .catch((error) => {});
     findAllReviews().then((reviews) => {
       this.setState({ reviews: reviews });
@@ -59,7 +63,7 @@ export class MoviesList extends React.Component {
             id="logo"
             className="rounded mx-auto d-block"
           />
-          {this.state.user.username === "" && (
+          {this.state.user && this.state.user.username === "" && (
             <div className="d-flex justify-content-center">
               <button
                 className="btn default-color"
@@ -77,7 +81,7 @@ export class MoviesList extends React.Component {
           )}
           <br />
           <br />
-          {this.state.user.username !== "" && (
+          {this.state.user && this.state.user.username !== "" && (
             <h3 className="d-flex justify-content-center col-12">
               Welcome Back, {this.state.user.username}!
             </h3>
@@ -97,6 +101,61 @@ export class MoviesList extends React.Component {
               <FontAwesomeIcon icon={faSearch} size="3x" />
             </button>
           </div>
+          {this.state.user &&
+            this.state.user.username !== "" &&
+            this.state.user.role === "admin" && (
+              <div>
+                <h3>Flagged Reviews</h3>
+                <ul className="list-group">
+                  {this.state.reviews.map((review) => (
+                    <li
+                      key={review._id}
+                      className="list-group-item unique-color lighten-1"
+                    >
+                      {review.text}- {review.username}
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => this.deleteReviewAdmin(review._id)}
+                      >
+                        Delete
+                      </button>
+                      {!this.state.user.blockedUsers
+                        .map((user) => user._id)
+                        .includes(review.userId) && (
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => this.blockUser(review.userId)}
+                        >
+                          Block User
+                        </button>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          {this.state.user && this.state.user.username !== "" && (
+            <div>
+              <h3 className="d-flex justify-content-center">
+                Catch Up With Your Friends!
+              </h3>
+              <ul className="list-group">
+                {this.state.user.friends.map((friend) => (
+                  <li
+                    key={friend._id}
+                    className="list-group-item unique-color lighten-1"
+                  >
+                    <Link
+                      className="text-white"
+                      to={`/profile/${friend.username}`}
+                    >
+                      {friend.username}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <h3>Recent Reviews</h3>
           <ul className="list-group">
             {this.state.reviews
