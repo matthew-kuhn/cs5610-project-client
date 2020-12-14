@@ -58,6 +58,9 @@ class MovieDetail extends React.Component {
   };
 
   addReply = (reviewId) => {
+    if (this.state.user.username === "") {
+      this.props.history.push("/login");
+    }
     createReply(this.state.reply, reviewId)
       .then((res) => {
         if (res.status !== 200) {

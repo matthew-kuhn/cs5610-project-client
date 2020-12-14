@@ -13,7 +13,6 @@ import {
   editReview,
 } from "../../services/reviewService";
 import {
-  findAllReplies,
   findRepliesForUser,
   deleteReply,
   editReply,
@@ -455,128 +454,126 @@ export default class Profile extends React.Component {
                 </ul>
               </div>
             )}
-          {this.state.user.role === "user" && (
-            <div>
-              {this.state.user.blocked && (
-                <h3>You're blocked, you cannot comment</h3>
-              )}
-              <h3>Reviews</h3>
-              <ul className="list-group">
-                {this.state.reviews.map((review) => (
-                  <li
-                    key={review._id}
-                    id={review._id + "-li"}
-                    className="list-group-item unique-color lighten-1"
+
+          <div>
+            {this.state.user.blocked && (
+              <h3>You're blocked, you cannot comment</h3>
+            )}
+            <h3>Reviews</h3>
+            <ul className="list-group">
+              {this.state.reviews.map((review) => (
+                <li
+                  key={review._id}
+                  id={review._id + "-li"}
+                  className="list-group-item unique-color lighten-1"
+                >
+                  <Link
+                    to={`/movie/${review.movieId}`}
+                    style={{ color: "pink" }}
                   >
-                    <Link
-                      to={`/movie/${review.movieId}`}
-                      style={{ color: "pink" }}
-                    >
-                      {review.movieTitle}:
-                    </Link>{" "}
-                    :<div id={review._id + "-text"}>{review.text}</div>
-                    <input
-                      type="text"
-                      className="form-control d-none"
-                      id={review._id + "-input"}
-                      defaultValue={review.text}
-                    />
-                    {this.state.loggedInUser.username ===
-                      this.state.user.username &&
-                      !this.state.editingMode && (
-                        <button
-                          className="btn btn-warning fa fa-pencil pull-right"
-                          id={review._id + "-edit"}
-                          onClick={() => this.startEditing(review)}
-                        >
-                          {/* <b>Edit Review</b> */}
-                        </button>
-                      )}
-                    {this.state.loggedInUser.username ===
-                      this.state.user.username &&
-                      !this.state.editingMode && (
-                        <button
-                          className="btn btn-success d-none fa fa-check pull-right"
-                          id={review._id + "-save"}
-                          onClick={() => this.finishEditing(review)}
-                        >
-                          {/* Save */}
-                        </button>
-                      )}
-                    {this.state.loggedInUser.username ===
-                      this.state.user.username &&
-                      !this.state.editingMode && (
-                        <button
-                          className="btn btn-danger fa fa-trash pull-right"
-                          onClick={() => this.deleteReview(review._id)}
-                        >
-                          {/* <b>Delete</b> */}
-                        </button>
-                      )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {this.state.user.role === "user" && (
-            <div>
-              {this.state.user.blocked && (
-                <h3>You're blocked, you cannot reply</h3>
-              )}
-              <h3>Replies</h3>
-              <ul className="list-group">
-                {this.state.replies.map((reply) => (
-                  <li
-                    key={reply._id}
-                    id={reply._id + "-li"}
-                    className="list-group-item unique-color-dark lighten-1"
-                  >
-                    <div id={reply._id + "-text"}>{reply.text}</div>
-                    <input
-                      type="text"
-                      className="form-control d-none"
-                      id={reply._id + "-input"}
-                      defaultValue={reply.text}
-                    />
-                    {this.state.loggedInUser.username ===
-                      this.state.user.username &&
-                      !this.state.editingMode && (
-                        <button
-                          className="btn btn-warning fa fa-pencil pull-right"
-                          id={reply._id + "-edit"}
-                          onClick={() => this.startEditingReply(reply)}
-                        >
-                          {/* <b>Edit Review</b> */}
-                        </button>
-                      )}
-                    {this.state.loggedInUser.username ===
-                      this.state.user.username &&
-                      !this.state.editingMode && (
-                        <button
-                          className="btn btn-success d-none fa fa-check pull-right"
-                          id={reply._id + "-save"}
-                          onClick={() => this.finishEditingReply(reply)}
-                        >
-                          {/* Save */}
-                        </button>
-                      )}
-                    {this.state.loggedInUser.username ===
-                      this.state.user.username &&
-                      !this.state.editingMode && (
-                        <button
-                          className="btn btn-danger fa fa-trash pull-right"
-                          onClick={() =>
-                            this.deleteReply(reply.parent, reply._id)
-                          }
-                        >
-                          {/* <b>Delete</b> */}
-                        </button>
-                      )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+                    {review.movieTitle}:
+                  </Link>{" "}
+                  :<div id={review._id + "-text"}>{review.text}</div>
+                  <input
+                    type="text"
+                    className="form-control d-none"
+                    id={review._id + "-input"}
+                    defaultValue={review.text}
+                  />
+                  {this.state.loggedInUser.username ===
+                    this.state.user.username &&
+                    !this.state.editingMode && (
+                      <button
+                        className="btn btn-warning fa fa-pencil pull-right"
+                        id={review._id + "-edit"}
+                        onClick={() => this.startEditing(review)}
+                      >
+                        {/* <b>Edit Review</b> */}
+                      </button>
+                    )}
+                  {this.state.loggedInUser.username ===
+                    this.state.user.username &&
+                    !this.state.editingMode && (
+                      <button
+                        className="btn btn-success d-none fa fa-check pull-right"
+                        id={review._id + "-save"}
+                        onClick={() => this.finishEditing(review)}
+                      >
+                        {/* Save */}
+                      </button>
+                    )}
+                  {this.state.loggedInUser.username ===
+                    this.state.user.username &&
+                    !this.state.editingMode && (
+                      <button
+                        className="btn btn-danger fa fa-trash pull-right"
+                        onClick={() => this.deleteReview(review._id)}
+                      >
+                        {/* <b>Delete</b> */}
+                      </button>
+                    )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            {this.state.user.blocked && (
+              <h3>You're blocked, you cannot reply</h3>
+            )}
+            <h3>Replies</h3>
+            <ul className="list-group">
+              {this.state.replies.map((reply) => (
+                <li
+                  key={reply._id}
+                  id={reply._id + "-li"}
+                  className="list-group-item unique-color-dark lighten-1"
+                >
+                  <div id={reply._id + "-text"}>{reply.text}</div>
+                  <input
+                    type="text"
+                    className="form-control d-none"
+                    id={reply._id + "-input"}
+                    defaultValue={reply.text}
+                  />
+                  {this.state.loggedInUser.username ===
+                    this.state.user.username &&
+                    !this.state.editingMode && (
+                      <button
+                        className="btn btn-warning fa fa-pencil pull-right"
+                        id={reply._id + "-edit"}
+                        onClick={() => this.startEditingReply(reply)}
+                      >
+                        {/* <b>Edit Review</b> */}
+                      </button>
+                    )}
+                  {this.state.loggedInUser.username ===
+                    this.state.user.username &&
+                    !this.state.editingMode && (
+                      <button
+                        className="btn btn-success d-none fa fa-check pull-right"
+                        id={reply._id + "-save"}
+                        onClick={() => this.finishEditingReply(reply)}
+                      >
+                        {/* Save */}
+                      </button>
+                    )}
+                  {this.state.loggedInUser.username ===
+                    this.state.user.username &&
+                    !this.state.editingMode && (
+                      <button
+                        className="btn btn-danger fa fa-trash pull-right"
+                        onClick={() =>
+                          this.deleteReply(reply.parent, reply._id)
+                        }
+                      >
+                        {/* <b>Delete</b> */}
+                      </button>
+                    )}
+                </li>
+              ))}
+            </ul>
+          </div>
           {this.state.user.role === "admin" && (
             <div>
               <h3>Blocked Users</h3>
