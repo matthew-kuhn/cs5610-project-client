@@ -633,6 +633,7 @@ export default class Profile extends React.Component {
               </ul>
             </div>
           )}
+          <Link to={'/policy'}>Policy</Link>
         </div>
       </div>
     );
